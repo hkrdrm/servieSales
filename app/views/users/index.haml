@@ -1,0 +1,10 @@
+- @title = "Welcome"
+%h2= "Users Listing"
+%table{:border => "1px", :padding => "20px"}
+  %tr
+    %th{:align => "center"} Username
+    %th{:align => "center"} Email
+  - @users.each do |user|
+    %tr
+      %td= user.username
+      %td= user.email

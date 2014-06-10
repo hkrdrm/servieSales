@@ -1,0 +1,13 @@
+%form{ :action => "create", :method => "post"}
+  %fieldset
+    %ol
+      %li
+        %label{:for => "name"} Name:
+        %input{:type => "text", :name => "name", :class => "text"}
+      %li
+        %label{:for => "mail"} email:
+        %input{:type => "text", :name => "email", :class => "text"}
+      %li
+        %label{:for => "role"} Message:
+        %input{:type => "text", :name => "role", :class => "text"}
+    %input{:type => "submit", :value => "Send", :class => "button"}

@@ -1,0 +1,9 @@
+%h2= "Accounts Listing"
+%table{:border => "1px", :padding => "20px"}
+  %tr
+    %th{:align => "center"} Name
+    %th{:align => "center"} Email
+  - @accounts.each do |account|
+    %tr
+      %td= account.name + " " + account.surname
+      %td= account.email

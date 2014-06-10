@@ -1,0 +1,1 @@
+#accounts= partial 'accounts/account', :collection => @accounts
