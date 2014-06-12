@@ -13,9 +13,10 @@ ServieSales::App.controllers :users do
 
   post :create do
     @user = User.new(params[:user])
-    if @user.save
+    begin
+      @user.save
       flash[:success] = "whoop whoop!"
-    else
+    rescue
       flash.now[:error] = "no no"
       render 'users/new'
     end

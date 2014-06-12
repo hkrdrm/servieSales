@@ -1,6 +1,6 @@
 %ul.nav.nav-tabs
-  %li.active=link_to tag_icon(:list, pat(:list)), url(:users, :index)
-  %li=link_to tag_icon(:plus, pat(:new)), url(:users, :new)
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:subscriptions, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:subscriptions, :new)
 
 .tabs-content
   %table#list.table.table-striped.table-hover.table-condensed
@@ -22,37 +22,37 @@
                   .arrow
                   %h3.popover-title=pat(:delete_selected_title)
                   .popover-content
-                    = form_tag url(:users, :destroy_many), :method => :delete do
-                      =hidden_field_tag :user_ids, :'data-delete-many-ids' => true
+                    = form_tag url(:subscriptions, :destroy_many), :method => :delete do
+                      =hidden_field_tag :subscription_ids, :'data-delete-many-ids' => true
                       =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
                       .btn.btn-default.btn-small.cancel=pat(:cancel)
-        %th.header= mat(:user, :id)
-        %th.header= mat(:user, :email)
-        %th.header= mat(:user, :password)
-        %th.header= mat(:user, :created_at)
-        %th.header= mat(:user, :updated_at)
-        %th.header= mat(:user, :username)
+        %th.header= mat(:subscription, :id)
+        %th.header= mat(:subscription, :name)
+        %th.header= mat(:subscription, :description)
+        %th.header= mat(:subscription, :billingCycle)
+        %th.header= mat(:subscription, :created_at)
+        %th.header= mat(:subscription, :updated_at)
         %th.header.list-row-action-header
 
     %tbody
-      -@users.each do |user|
+      -@subscriptions.each do |subscription|
         %tr.list-row
           %td.list-column.list-selectable
-            =check_box_tag 'user_ids[]', :value => user.id, :class => 'list-selectable-checkbox'
-          %td.list-column=user.id
-          %td.list-column=user.email
-          %td.list-column=user.password
-          %td.list-column=time_ago_in_words user.created_at
-          %td.list-column=time_ago_in_words user.updated_at
-          %td.list-column=user.username
+            =check_box_tag 'subscription_ids[]', :value => subscription.id, :class => 'list-selectable-checkbox'
+          %td.list-column=subscription.id
+          %td.list-column=subscription.name
+          %td.list-column=subscription.description
+          %td.list-column=subscription.billingCycle
+          %td.list-column=time_ago_in_words subscription.created_at
+          %td.list-column=time_ago_in_words subscription.updated_at
           %td.list-column.list-row-action
             .list-row-action-wrapper
-              =link_to tag_icon(:edit), :href => url(:users, :edit, :id => user.id), :rel => :tooltip, :title => "#{pat(:edit)} user", :class => 'list-row-action-wrapper-link'
-              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} user", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              =link_to tag_icon(:edit), :href => url(:subscriptions, :edit, :id => subscription.id), :rel => :tooltip, :title => "#{pat(:edit)} subscription", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} subscription", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
               .popover.list-row-action-popover-delete-one.left
                 .arrow
-                %h3.popover-title=pat(:delete, :model => "user")
+                %h3.popover-title=pat(:delete, :model => "subscription")
                 .popover-content
-                  = form_tag url(:users, :destroy, :id => user.id), :method => :delete do
+                  = form_tag url(:subscriptions, :destroy, :id => subscription.id), :method => :delete do
                     =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
                     .btn.btn-default.btn-small.cancel=pat(:cancel)

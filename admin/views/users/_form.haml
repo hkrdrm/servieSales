@@ -10,6 +10,12 @@
   .controls
     =f.text_field :password, :class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:password, :class => 'text-error') : pat(:example)
+- error = @user.errors.include?(:username)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :username, :class => 'control-label'
+  .controls
+    =f.text_field :username, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:username, :class => 'text-error') : pat(:example)
 
 .form-actions
   =f.submit pat(:save), :class => 'btn btn-primary'
