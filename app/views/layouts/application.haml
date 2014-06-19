@@ -30,13 +30,11 @@
           %a.brand{:href => "#"} Winko Ventrillo
           .nav-collapse.collapse
             %ul.nav
-              %li.active
-                %a{:href => "#"} Home
               %li.dropdown
                 %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown"} 
                   Users
                   %b.caret
-                %ul.dropdown-menu{"role" => "menu"}
+                %ul.dropdown-menu
                   %li
                     %a{:href => "/users/new"}
                       Register
@@ -61,3 +59,4 @@
     / Placed at the end of the document so the pages load faster
 
     %script{:src => "/javascripts/bootstrap.js"}
+    %script{:src => "/javascripts/jquery.js"}
