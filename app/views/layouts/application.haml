@@ -23,19 +23,30 @@
     .navbar.navbar-fixed-top.navbar-inverse
       .navbar-inner
         .container
-          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+          %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "#"} Project name
-          .nav-collapse
+          %a.brand{:href => "#"} Winko Ventrillo
+          .nav-collapse.collapse
             %ul.nav
               %li.active
                 %a{:href => "#"} Home
+              %li.dropdown
+                %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown"} 
+                  Users
+                  %b.caret
+                %ul.dropdown-menu{"role" => "menu"}
+                  %li
+                    %a{:href => "/users/new"}
+                      Register
+                  %li
+                    %a{:href => "/users/index"}
+                      List
               %li
-                %a{:href => "#about"} About
+                %a{:href => "/about_us"} About
               %li
-                %a{:href => "#contact"} Contact
+                %a{:href => "/contact"} Contact
           / /.nav-collapse
     .container
       / Main hero unit for a primary marketing message or call to action
@@ -49,3 +60,4 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
 
+    %script{:src => "/javascripts/bootstrap.js"}

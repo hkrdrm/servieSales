@@ -10,7 +10,7 @@ module ServieSales
 
 
     get "/" do
-      "hello worldo's"
+      render 'static_pages/index'
     end
     
     get :about, :map => '/about_us' do
