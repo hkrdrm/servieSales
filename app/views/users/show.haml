@@ -1,0 +1,22 @@
+- @title = @user.username + "'s Profile"
+%h2= "User Profile"
+%table{:padding => "20px"}
+  %tr
+    %td{:width => "100px"} 
+      %b= "Username"
+    %td{:width => "200px"}= @user.username
+  %tr
+    %td
+      %b= "Email"
+    %td= @user.email
+%hr
+%h2= "Server Info"
+%table{:padding => "20px"}
+  %tr
+    %td{:width => "100px"} 
+      %b= "IP"
+    %td{:width => "200px"}= "0.0.0.0"
+  %tr
+    %td{:width => "100px"} 
+      %b= "Password"
+    %td{:width => "200px"}= "ect...."

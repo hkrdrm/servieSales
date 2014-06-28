@@ -5,24 +5,21 @@ ServieSales::App.controllers :users do
     render 'index'
   end
 
- # get :show, :map => '/users/:email' do
- #   @user = User.find(params[:email])
- #   @title = @user.email
- #   render "users/email"
- # end
+  get :show, :map => '/users/show/:username' do
+    @user = User.find_by_username(params[:username])
+    render "users/show"
+  end
 
   post :create do
     @user = User.new(params[:user])
-    begin
-      @user.save
-      flash[:success] = "whoop whoop!"
-    rescue
-      flash.now[:error] = "no no"
-      render 'users/new'
+    if @user.save
+      redirect('/')
+    else
+      render 'new'
     end
   end
 
-  get :new do
+  get :new, :map => '/users/new' do
     @user = User.new
     render 'users/new'
   end

@@ -1,7 +1,7 @@
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}/
-    %title Bootstrap, from Twitter
+    %title= ["Crak Chat", @title].compact.join(" || ")
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
     / Le HTML5 shim, for IE6-8 support of HTML elements
@@ -27,9 +27,9 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "#"} Winko Ventrillo
+          %a.brand{:href => "#"} Crak Chat
           .nav-collapse.collapse
-            %ul.nav
+            %ul.nav.pull-left
               %li.dropdown
                 %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown"} 
                   Users
@@ -45,6 +45,20 @@
                 %a{:href => "/about_us"} About
               %li
                 %a{:href => "/contact"} Contact
+            %ul.nav.pull-right
+              %li.dropdown.pull-right            
+                - if signed_in? 
+                  %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown"} 
+                    = current_user.username
+                    %b.caret
+                  %ul.dropdown-menu.pull-right{"role" => "menu", "aria-labelledby" => "dLabel"}
+                    %li
+                      %a{:href => "/logout"} My Account
+                    %li
+                      %a{:href => "/logout"} Logout
+                - else
+                  %a{:href => "/login"} Login
+
           / /.nav-collapse
     .container
       / Main hero unit for a primary marketing message or call to action

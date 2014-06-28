@@ -6,5 +6,6 @@
     %th{:align => "center"} Email
   - @users.each do |user|
     %tr
-      %td= user.username
+      %td 
+        %a{:href => "/users/show/"+ user.username}= user.username
       %td= user.email

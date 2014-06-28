@@ -19,6 +19,7 @@ gem 'sass'
 gem 'haml'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
+gem 'padrino-warden', :github => 'jondot/padrino-warden'
 
 # Test requirements
 gem 'shoulda', :group => 'test'

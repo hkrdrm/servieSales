@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/jondot/padrino-warden.git
+  revision: 4d79d9bcd0ea8f0e46b8f1f86da24e13e3f5f855
+  specs:
+    padrino-warden (0.20.0)
+      warden (>= 0.10.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -93,6 +100,8 @@ GEM
       thread_safe (~> 0.1)
     url_mount (0.2.1)
       rack
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -102,6 +111,7 @@ DEPENDENCIES
   bcrypt
   haml
   padrino (= 0.12.2)
+  padrino-warden!
   rack-test
   rake
   sass
