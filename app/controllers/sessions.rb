@@ -5,7 +5,7 @@ ServieSales::App.controllers :sessions do
   end
 
   post :create do
-    user = User.find_by_username(params[:username])
+    user = User.find_by_username(params[:username].downcase)
     
     if user.password == params[:password]
       sign_in(user)

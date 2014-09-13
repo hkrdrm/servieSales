@@ -26,6 +26,8 @@ ServieSales::App.controllers :users do
       :email => @user.email
     )
     @user.stripeId = customer.id
+    @user.displayName = @user.username
+    @user.username = @user.username.downcase
     if @user.save
       redirect('/')
     else

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 16) do
+ActiveRecord::Schema.define(version: 17) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 16) do
     t.datetime "updated_at"
     t.string   "username"
     t.string   "stripeId"
+    t.string   "displayName"
   end
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true
