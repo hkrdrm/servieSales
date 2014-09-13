@@ -7,11 +7,25 @@ ServieSales::App.controllers :users do
 
   get :show, :map => '/users/show/:username' do
     @user = User.find_by_username(params[:username])
-    render "users/show"
+    @servers = Server.where(:userId => @user.id)
+    begin
+      if @user.username == current_user.username
+        render "users/show"
+      else
+        redirect('/')
+      end
+    rescue
+      redirect('/')
+    end
   end
 
   post :create do
     @user = User.new(params[:user])
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    customer = Stripe::Customer.create(
+      :email => @user.email
+    )
+    @user.stripeId = customer.id
     if @user.save
       redirect('/')
     else
@@ -36,6 +50,5 @@ ServieSales::App.controllers :users do
   # get :foo, :with => :id do
   #   'Maps to url '/foo/#{params[:id]}''
   # end
-
 
 end

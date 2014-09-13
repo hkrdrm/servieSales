@@ -19,7 +19,10 @@ gem 'sass'
 gem 'haml'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
-gem 'padrino-warden', :github => 'jondot/padrino-warden'
+gem 'dotenv'
+
+# Stripe API
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Test requirements
 gem 'shoulda', :group => 'test'

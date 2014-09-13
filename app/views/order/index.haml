@@ -1,0 +1,5 @@
+= form_for :order, url(:order, :create) do |f|
+  %article
+    %label{:class => "amount"}
+      %span Amount: $5.00
+  %script(src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button" data-key="pk_test_4LdbpZTtYUS7OxBSxeiMNkxa" data-amount="300" data-name="Monthly Subscription" data-description="Ollie Oop")

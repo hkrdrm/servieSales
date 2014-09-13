@@ -4,7 +4,6 @@ module ServieSales
     use ActiveRecord::ConnectionAdapters::ConnectionManagement
     register Padrino::Mailer
     register Padrino::Helpers
-    register Padrino::Warden
 
     enable :sessions
     set :protect_from_csrf, false

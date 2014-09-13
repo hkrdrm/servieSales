@@ -4,8 +4,10 @@
   %tr
     %th{:align => "center"} Username
     %th{:align => "center"} Email
+    %th{:align => "center"} stripeId
   - @users.each do |user|
     %tr
       %td 
         %a{:href => "/users/show/"+ user.username}= user.username
       %td= user.email
+      %td= user.stripeId

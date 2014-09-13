@@ -10,13 +10,20 @@
       %b= "Email"
     %td= @user.email
 %hr
-%h2= "Server Info"
-%table{:padding => "20px"}
+%h2= "My Servers"
+%table{:padding => "20px", :border => "1px", :width => "100%"}
   %tr
-    %td{:width => "100px"} 
-      %b= "IP"
-    %td{:width => "200px"}= "0.0.0.0"
-  %tr
-    %td{:width => "100px"} 
-      %b= "Password"
-    %td{:width => "200px"}= "ect...."
+    %th{:width => "100px"}="Name"
+    %th{:width => "100px"}="IP"
+    %th{:width => "100px"}="Port"
+    %th{:width => "100px"}= "Slots"
+    %th{:width => "100px"}= "Password"
+    %th{:width => "100px"}= "Software"
+  - @servers.each do |server|
+    %tr
+      %td= server.name
+      %td= server.ip
+      %td= server.port
+      %td= server.slots
+      %td= server.password
+      %td= server.software

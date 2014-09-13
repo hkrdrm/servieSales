@@ -1,6 +1,6 @@
 %ul.nav.nav-tabs
-  %li.active=link_to tag_icon(:list, pat(:list)), url(:subscriptions, :index)
-  %li=link_to tag_icon(:plus, pat(:new)), url(:subscriptions, :new)
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:orders, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:orders, :new)
 
 .tabs-content
   %table#list.table.table-striped.table-hover.table-condensed
@@ -22,39 +22,39 @@
                   .arrow
                   %h3.popover-title=pat(:delete_selected_title)
                   .popover-content
-                    = form_tag url(:subscriptions, :destroy_many), :method => :delete do
-                      =hidden_field_tag :subscription_ids, :'data-delete-many-ids' => true
+                    = form_tag url(:orders, :destroy_many), :method => :delete do
+                      =hidden_field_tag :order_ids, :'data-delete-many-ids' => true
                       =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
                       .btn.btn-default.btn-small.cancel=pat(:cancel)
-        %th.header= mat(:subscription, :id)
-        %th.header= mat(:subscription, :name)
-        %th.header= mat(:subscription, :description)
-        %th.header= mat(:subscription, :billingCycle)
-        %th.header= mat(:subscription, :created_at)
-        %th.header= mat(:subscription, :updated_at)
-        %th.header= mat(:subscription, :price)
+        %th.header= mat(:order, :id)
+        %th.header= mat(:order, :userId)
+        %th.header= mat(:order, :subscriptionId)
+        %th.header= mat(:order, :paid)
+        %th.header= mat(:order, :created_at)
+        %th.header= mat(:order, :updated_at)
+        %th.header= mat(:order, :price)
         %th.header.list-row-action-header
 
     %tbody
-      -@subscriptions.each do |subscription|
+      -@orders.each do |order|
         %tr.list-row
           %td.list-column.list-selectable
-            =check_box_tag 'subscription_ids[]', :value => subscription.id, :class => 'list-selectable-checkbox'
-          %td.list-column=subscription.id
-          %td.list-column=subscription.name
-          %td.list-column=subscription.description
-          %td.list-column=subscription.billingCycle
-          %td.list-column=time_ago_in_words subscription.created_at
-          %td.list-column=time_ago_in_words subscription.updated_at
-          %td.list-column=subscription.price
+            =check_box_tag 'order_ids[]', :value => order.id, :class => 'list-selectable-checkbox'
+          %td.list-column=order.id
+          %td.list-column=order.userId
+          %td.list-column=order.subscriptionId
+          %td.list-column= order.paid ? tag_icon(:ok) : tag_icon(:remove)
+          %td.list-column=time_ago_in_words order.created_at
+          %td.list-column=time_ago_in_words order.updated_at
+          %td.list-column=order.price
           %td.list-column.list-row-action
             .list-row-action-wrapper
-              =link_to tag_icon(:edit), :href => url(:subscriptions, :edit, :id => subscription.id), :rel => :tooltip, :title => "#{pat(:edit)} subscription", :class => 'list-row-action-wrapper-link'
-              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} subscription", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              =link_to tag_icon(:edit), :href => url(:orders, :edit, :id => order.id), :rel => :tooltip, :title => "#{pat(:edit)} order", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} order", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
               .popover.list-row-action-popover-delete-one.left
                 .arrow
-                %h3.popover-title=pat(:delete, :model => "subscription")
+                %h3.popover-title=pat(:delete, :model => "order")
                 .popover-content
-                  = form_tag url(:subscriptions, :destroy, :id => subscription.id), :method => :delete do
+                  = form_tag url(:orders, :destroy, :id => order.id), :method => :delete do
                     =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
                     .btn.btn-default.btn-small.cancel=pat(:cancel)

@@ -1,0 +1,64 @@
+%ul.nav.nav-tabs
+  %li.active=link_to tag_icon(:list, pat(:list)), url(:server_instances, :index)
+  %li=link_to tag_icon(:plus, pat(:new)), url(:server_instances, :new)
+
+.tabs-content
+  %table#list.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th.header.list-menu
+          .dropdown
+            %a.list-menu-toggle.dropdown-toggle{:href => '#', :'data-toggle' => :dropdown}
+              =tag_icon :magic
+              %span.caret
+            %ul.list-menu.dropdown-menu{:role => :menu}
+              %li.list-menu-wrapper=link_to tag_icon(:check, pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:'check-empty', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+              %li.list-menu-divider.divider
+              %li.list-menu-wrapper.list-menu-wrapper-disabled
+                =link_to tag_icon(:trash, pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                .list-menu-popover-delete-selected.popover.right
+                  .arrow
+                  %h3.popover-title=pat(:delete_selected_title)
+                  .popover-content
+                    = form_tag url(:server_instances, :destroy_many), :method => :delete do
+                      =hidden_field_tag :server_instances_ids, :'data-delete-many-ids' => true
+                      =submit_tag pat(:delete), :class =>'list-menu-popover-delete-selected-btn btn btn-danger btn-small'
+                      .btn.btn-default.btn-small.cancel=pat(:cancel)
+        %th.header= mat(:server_instances, :id)
+        %th.header= mat(:server_instances, :userId)
+        %th.header= mat(:server_instances, :name)
+        %th.header= mat(:server_instances, :ip)
+        %th.header= mat(:server_instances, :software)
+        %th.header= mat(:server_instances, :slots)
+        %th.header= mat(:server_instances, :password)
+        %th.header= mat(:server_instances, :created_at)
+        %th.header= mat(:server_instances, :updated_at)
+        %th.header.list-row-action-header
+
+    %tbody
+      -@server_instances.each do |server_instances|
+        %tr.list-row
+          %td.list-column.list-selectable
+            =check_box_tag 'server_instances_ids[]', :value => server_instances.id, :class => 'list-selectable-checkbox'
+          %td.list-column=server_instances.id
+          %td.list-column=server_instances.userId
+          %td.list-column=server_instances.name
+          %td.list-column=server_instances.ip
+          %td.list-column=server_instances.software
+          %td.list-column=server_instances.slots
+          %td.list-column=server_instances.password
+          %td.list-column=time_ago_in_words server_instances.created_at
+          %td.list-column=time_ago_in_words server_instances.updated_at
+          %td.list-column.list-row-action
+            .list-row-action-wrapper
+              =link_to tag_icon(:edit), :href => url(:server_instances, :edit, :id => server_instances.id), :rel => :tooltip, :title => "#{pat(:edit)} server_instances", :class => 'list-row-action-wrapper-link'
+              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} server_instances", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              .popover.list-row-action-popover-delete-one.left
+                .arrow
+                %h3.popover-title=pat(:delete, :model => "server_instances")
+                .popover-content
+                  = form_tag url(:server_instances, :destroy, :id => server_instances.id), :method => :delete do
+                    =submit_tag pat(:delete), :class =>'list-row-action-popover-delete-one-btn btn btn-danger btn-small'
+                    .btn.btn-default.btn-small.cancel=pat(:cancel)

@@ -1,0 +1,26 @@
+1. Users
+  -Register new users
+  -Manage Account
+     -Servers / Subscription
+     -Server settings interface
+
+2. Subscriptions
+  -Able to enroll users in subscriptions with stripe
+  -Create invoice.
+  -Interface for customers to view invoices
+
+3. Admin
+     -Reports
+     -User Management
+     -Server Management
+  
+4. Host
+     -Database will store information about each host
+       -RAM
+       -Number of Virtual machines running
+       -Processor
+
+     -Database information will be used to calculate how many more virtual
+      machines the host can handle based on the resources being used
+
+     -Host will run daemon to communicate with webserver

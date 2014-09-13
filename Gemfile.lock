@@ -1,9 +1,11 @@
 GIT
-  remote: git://github.com/jondot/padrino-warden.git
-  revision: 4d79d9bcd0ea8f0e46b8f1f86da24e13e3f5f855
+  remote: https://github.com/stripe/stripe-ruby
+  revision: 8bb6acfca9b20cc028410bc66e2ba0491fba3c7e
   specs:
-    padrino-warden (0.20.0)
-      warden (>= 0.10.3)
+    stripe (1.14.0)
+      json (~> 1.8.1)
+      mime-types (~> 1.25)
+      rest-client (~> 1.4)
 
 GEM
   remote: https://rubygems.org/
@@ -24,6 +26,9 @@ GEM
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
     builder (3.2.2)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
     haml (4.0.5)
       tilt
     http_router (0.11.1)
@@ -37,6 +42,7 @@ GEM
     mime-types (1.25.1)
     minitest (5.3.4)
     moneta (0.7.20)
+    netrc (0.7.7)
     padrino (0.12.2)
       padrino-admin (= 0.12.2)
       padrino-cache (= 0.12.2)
@@ -78,6 +84,9 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     rake (10.3.2)
+    rest-client (1.7.1)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     sass (3.3.8)
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
@@ -100,8 +109,6 @@ GEM
       thread_safe (~> 0.1)
     url_mount (0.2.1)
       rack
-    warden (1.2.3)
-      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -109,11 +116,12 @@ PLATFORMS
 DEPENDENCIES
   activerecord (>= 3.1)
   bcrypt
+  dotenv
   haml
   padrino (= 0.12.2)
-  padrino-warden!
   rack-test
   rake
   sass
   shoulda
   sqlite3
+  stripe!

@@ -1,0 +1,18 @@
+- @title = "Order Now"
+= form_for :order, url(:users, :create) do |f|
+  <!--= f.error_messages
+  = f.hidden_field :userId, :value => current_user.id -->
+  %p
+    %form{:action => "", :method => "POST"}
+      %script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_4LdbpZTtYUS7OxBSxeiMNkxa"
+        data-amount="2000"
+        data-name="Demo Site"
+        data-description="2 widgets ($20.00)"
+        data-image="/128x128.png"
+  %p
+    = f.select(:subscription, :collection => @subscriptions, :fields => [:name, :id])
+  %p
+    = f.submit "Create", :class => 'button'
+ 

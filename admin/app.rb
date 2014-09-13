@@ -33,9 +33,10 @@ module ServieSales
     end
 
     access_control.roles_for :admin do |role|
-      role.project_module :active_subscriptions, '/active_subscriptions'
+      role.project_module :orders, '/orders'
       role.project_module :subscriptions, '/subscriptions'
       role.project_module :users, '/users'
+      role.project_module :servers, '/servers'
       role.project_module :accounts, '/accounts'
     end
 

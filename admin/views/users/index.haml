@@ -32,6 +32,7 @@
         %th.header= mat(:user, :created_at)
         %th.header= mat(:user, :updated_at)
         %th.header= mat(:user, :username)
+        %th.header= mat(:user, :stripeId)
         %th.header.list-row-action-header
 
     %tbody
@@ -45,6 +46,7 @@
           %td.list-column=time_ago_in_words user.created_at
           %td.list-column=time_ago_in_words user.updated_at
           %td.list-column=user.username
+          %td.list-column=user.stripeId
           %td.list-column.list-row-action
             .list-row-action-wrapper
               =link_to tag_icon(:edit), :href => url(:users, :edit, :id => user.id), :rel => :tooltip, :title => "#{pat(:edit)} user", :class => 'list-row-action-wrapper-link'

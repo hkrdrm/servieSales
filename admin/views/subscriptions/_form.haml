@@ -16,6 +16,12 @@
   .controls
     =f.text_field :billingCycle, :class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:billingCycle, :class => 'text-error') : pat(:example)
+- error = @subscription.errors.include?(:price)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :price, :class => 'control-label'
+  .controls
+    =f.text_field :price, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:price, :class => 'text-error') : pat(:example)
 
 .form-actions
   =f.submit pat(:save), :class => 'btn btn-primary'

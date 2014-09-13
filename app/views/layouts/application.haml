@@ -1,7 +1,7 @@
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}/
-    %title= ["Crak Chat", @title].compact.join(" || ")
+    %title= ["MumbleBox", @title].compact.join(" || ")
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
     / Le HTML5 shim, for IE6-8 support of HTML elements
@@ -27,7 +27,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "#"} Crak Chat
+          %a.brand{:href => "#"} MumbleBox
           .nav-collapse.collapse
             %ul.nav.pull-left
               %li.dropdown
@@ -75,3 +75,4 @@
     %script{:src => "/javascripts/bootstrap.js"}
     %script{:src => "/javascripts/jquery.js"}
     %script{:src => "/javascripts/dropdown.js"}
+    %script{:src => "https://js.stripe.com/v2/"}
