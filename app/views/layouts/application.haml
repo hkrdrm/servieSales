@@ -42,6 +42,9 @@
                     %a{:href => "/users/index"}
                       List
               %li
+                %a{:href => "/orders/index"}
+                  Order
+              %li
                 %a{:href => "/about_us"} About
               %li
                 %a{:href => "/contact"} Contact
@@ -53,11 +56,14 @@
                     %b.caret
                   %ul.dropdown-menu.pull-right{"role" => "menu", "aria-labelledby" => "dLabel"}
                     %li
-                      %a{:href => "/logout"} My Account
+                      %a{:href => "/users/show/" + current_user.username} My Account
                     %li
                       %a{:href => "/logout"} Logout
                 - else
-                  %a{:href => "/login"} Login
+                  %li
+                    %a{:href => "/login"} Login
+                  %li
+                    %a{:href => "/users/new"} Register
 
           / /.nav-collapse
     .container
@@ -76,3 +82,5 @@
     %script{:src => "/javascripts/jquery.js"}
     %script{:src => "/javascripts/dropdown.js"}
     %script{:src => "https://js.stripe.com/v2/"}
+    %script{:src => "/javascripts/orderForm.js"}
+    %script{:src => "/javascripts/jquery.formatCurrency-1.4.0.min.js"}

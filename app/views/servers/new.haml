@@ -1,0 +1,13 @@
+= form_for :server, url(:order, :create) do |f2|
+  %article
+    %p
+      = f2.label :ServerName, :caption => "Server Name"
+      = f2.text_field :serverName
+
+    %p
+      = f2.label :ServerPass, :caption => "Server Password"
+      = f2.text_field :serverPassword
+
+    %p
+      = f2.label :SuperUserPassword, :caption => "SuperUser Password"
+      = f2.text_field :superUserPassword

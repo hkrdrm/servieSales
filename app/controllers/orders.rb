@@ -1,11 +1,11 @@
 require "stripe"
 ServieSales::App.controllers :order do
   
-  get :index, :map => '/order/index' do
+  get :index, :map => '/orders/index' do
     #@subscriptions = Subscription.pluck(:name)
     @subscriptions = Subscription.all
     if current_user != nil
-      render 'index'
+      render '/orders/index'
     else
       redirect('/')
     end
@@ -18,9 +18,13 @@ ServieSales::App.controllers :order do
 
     # Get the credit card details submitted by the form
     token = params[:stripeToken]
+    @order = Order.new(params[:order])
 
     customer = Stripe::Customer.retrieve(current_user.stripeId)
-    customer.subscriptions.create(:plan => "10slot", :card => token)
+    customer.subscriptions.create(:plan => (@order.nSlots / 40).to_s + "slot", :card => token)
+
+    
+
     redirect('/')
   end
   

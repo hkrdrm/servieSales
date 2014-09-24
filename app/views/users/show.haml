@@ -19,6 +19,7 @@
     %th{:width => "100px"}= "Slots"
     %th{:width => "100px"}= "Password"
     %th{:width => "100px"}= "Software"
+    %th{:width => "100px"}= "Active"
   - @servers.each do |server|
     %tr
       %td= server.name
@@ -27,3 +28,4 @@
       %td= server.slots
       %td= server.password
       %td= server.software
+      %td= pingServer(server.ip)

@@ -42,6 +42,7 @@ GEM
     mime-types (1.25.1)
     minitest (5.3.4)
     moneta (0.7.20)
+    net-ping (1.7.4)
     netrc (0.7.7)
     padrino (0.12.2)
       padrino-admin (= 0.12.2)
@@ -118,6 +119,7 @@ DEPENDENCIES
   bcrypt
   dotenv
   haml
+  net-ping
   padrino (= 0.12.2)
   rack-test
   rake

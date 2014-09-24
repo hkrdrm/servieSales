@@ -1,0 +1,14 @@
+= form_for :order, url(:order, :create) do |f|
+  %article
+    %p{:class => "slots"}
+      = f.label :nSlots, :caption => "Subscription Plan"
+      = f.select :nSlots, :options => [['10 Slots - $4.00', '400'], ['20 Slots - $8.00', '800'], ['30 Slots - $12.00', '1200'], ['40 Slots - $16.00', '1600'], ['50 Slots - $20.00', '2000'], ['75 Slots - $30.00', '3000'], ['100 Slots - $40.00', '4000']], :selected => '10 Slots - $4.00 ', :class => 'nSlots'
+    
+    %table{:class => "yar", :width => "400px"} 
+      %tr
+        %td Amount: 
+        %td{:class => "amount"} $4.00
+      
+
+  %div{:class => "button" }
+    %script(src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button" data-key="pk_test_4LdbpZTtYUS7OxBSxeiMNkxa" data-amount="400" data-name="Monthly Subscription" data-description="Mumble Server Order")

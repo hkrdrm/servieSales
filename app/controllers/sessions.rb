@@ -7,7 +7,7 @@ ServieSales::App.controllers :sessions do
   post :create do
     user = User.find_by_username(params[:username].downcase)
     
-    if user.password == params[:password]
+    if user != nil && user.password == params[:password]
       sign_in(user)
       redirect '/'
     else
