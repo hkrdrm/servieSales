@@ -11,6 +11,10 @@ ServieSales::App.controllers :order do
     end
   end
 
+  get :new, :map => '/orders/new' do
+    render 'orders/new'
+  end
+
   post :create do
     # Set your secret key: remember to change this to your live secret key in production
     # See your keys here https://dashboard.stripe.com/account
@@ -19,13 +23,17 @@ ServieSales::App.controllers :order do
     # Get the credit card details submitted by the form
     token = params[:stripeToken]
     @order = Order.new(params[:order])
+    @order.userId = current_user.id.to_i
 
     customer = Stripe::Customer.retrieve(current_user.stripeId)
-    customer.subscriptions.create(:plan => (@order.nSlots / 40).to_s + "slot", :card => token)
+    customer.subscriptions.create(:plan => @order.nSlots.to_s + "slot", :card => token)
 
-    
+    if(@order.save)
+      redirect('/servers/new')
+    else
+      render 'orders/new'
+    end
 
-    redirect('/')
   end
   
 

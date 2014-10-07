@@ -4,7 +4,8 @@ ServieSales::App.controllers :static_pages do
     render 'index'
   end
   
-  get :about, :map => 'about_us' do
+  get :about, :map => '/static_pages/about' do
+    render 'about'
   end
 
   # get :sample, :map => '/sample/url', :provides => [:any, :js] do
