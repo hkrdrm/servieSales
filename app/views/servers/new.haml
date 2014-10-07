@@ -1,3 +1,10 @@
+%div{:id => "formProg"}
+  %div{:id => "pBar", :class => "progress progress-warning progress-striped"}
+    %div{:id => "pBar2", :class => "bar", :style => "width: 66%"}
+  #step= partial 'orders/step', :locals => {:s => "Process Payment", :c => "previous", :dot => "/images/orangeDot.png"}
+  #step= partial 'orders/step', :locals => {:s => "Setup Server", :c => "current", :dot => "/images/whiteDot.png"}
+  #step= partial 'orders/step', :locals => {:s => "Done", :c => "next", :dot => "/images/whiteDot.png"}
+
 = form_for :server, url(:order, :create) do |f2|
   %article
     %p

@@ -8,7 +8,7 @@
     /[if lt IE 9]
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     / Le styles
-    = stylesheet_link_tag 'bootstrap', 'bootstrap-responsive'
+    = stylesheet_link_tag 'bootstrap', 'bootstrap-responsive', 'style'
     :css
       body {
         padding-top: 60px;
@@ -45,7 +45,7 @@
                 %a{:href => "/orders/index"}
                   Order
               %li
-                %a{:href => "/about_us"} About
+                %a{:href => "/static_pages/about"} About
               %li
                 %a{:href => "/contact"} Contact
             %ul.nav.pull-right
@@ -67,6 +67,7 @@
 
           / /.nav-collapse
     .container
+      .bg
       / Main hero unit for a primary marketing message or call to action
       .hero-unit
         #main= yield

@@ -1,4 +1,9 @@
 ServieSales::App.controllers :servers do
+
+
+  get :new, :map => '/servers/new' do
+    render 'servers/new'
+  end
   
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'

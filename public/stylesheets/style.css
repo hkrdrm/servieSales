@@ -1,0 +1,61 @@
+/*
+  Author: Matt Spiers
+*/
+
+
+body{
+  background: url('/images/fractalBackground.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg{
+  background: url('/images/mumbleLogo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 200px;
+}
+
+.hero-unit{
+  background: url('/images/heroBackground.png');
+  color: white;
+  position: relative;
+  top: -200px;
+}
+
+footer{
+  color: white;
+  position: relative;
+  top: -200px;
+}
+#form{
+  position: relative;
+  float: none;
+}
+#formProg{
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
+.current{
+  color: de9124;
+}
+#pBar{
+  background: url("/images/heroBackground.png");
+}
+#pBar2{
+//  position: relative;
+}
+#step{
+  font-size: 16px;
+  width: 150px;
+  margin: 0 auto;
+  display: inline-block;
+}
+table{
+  color: white;
+  border: white;
+}
+
+
+
