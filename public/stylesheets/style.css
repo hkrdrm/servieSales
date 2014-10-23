@@ -27,7 +27,25 @@ footer{
   color: white;
   position: relative;
   top: -200px;
+  margin: 0 auto;
 }
+
+#cName{
+  display: inline-block;
+  width: 49%;
+  text-align: left;
+}
+#wr1{
+  margin: 0 auto;
+  text-align: center;
+}
+
+#stripeTag{
+  display: inline-block;
+  width: 49%;
+  text-align: right;
+}
+
 #form{
   position: relative;
   float: none;

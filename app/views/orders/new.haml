@@ -6,7 +6,7 @@
   #step= partial 'orders/step', :locals => {:s => "Done", :c => "next", :dot => "/images/whiteDot.png"}
 
 %div{:id => "form"}
-  = form_for :order, url(:order, :create) do |f|
+  = form_for :order, url(:orders, :create) do |f|
     %article
       %p{:class => "slots"}
         = f.label :nSlots, :caption => "Subscription Plan"

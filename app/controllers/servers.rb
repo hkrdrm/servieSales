@@ -1,8 +1,17 @@
 ServieSales::App.controllers :servers do
 
 
-  get :new, :map => '/servers/new' do
+  get :new, :map => '/servers/new/' do
     render 'servers/new'
+  end
+  
+  post :create do
+    @order = Order.getCurrentOrder(current_user.id)
+    
+    @server = Server.new(params[:server])
+    
+    redirect('/')
+
   end
   
   # get :index, :map => '/foo/bar' do

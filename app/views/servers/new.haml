@@ -5,7 +5,7 @@
   #step= partial 'orders/step', :locals => {:s => "Setup Server", :c => "current", :dot => "/images/whiteDot.png"}
   #step= partial 'orders/step', :locals => {:s => "Done", :c => "next", :dot => "/images/whiteDot.png"}
 
-= form_for :server, url(:order, :create) do |f2|
+= form_for :server, url(:servers, :create) do |f2|
   %article
     %p
       = f2.label :ServerName, :caption => "Server Name"
@@ -18,3 +18,5 @@
     %p
       = f2.label :SuperUserPassword, :caption => "SuperUser Password"
       = f2.text_field :superUserPassword
+    %p
+      = f2.submit "Submit", :class => 'btn btn-primary'
