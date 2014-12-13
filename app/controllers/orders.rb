@@ -1,6 +1,6 @@
 require "stripe"
 ServieSales::App.controllers :order do
-  
+
   get :index, :map => '/orders/index' do
     #@subscriptions = Subscription.pluck(:name)
     @subscriptions = Subscription.all
@@ -13,6 +13,10 @@ ServieSales::App.controllers :order do
 
   get :new, :map => '/orders/new' do
     render 'orders/new'
+  end
+
+  get :complete, :map => '/orders/complete' do
+    render 'orders/complete'
   end
 
   post :create do
@@ -35,7 +39,7 @@ ServieSales::App.controllers :order do
     end
 
   end
-  
+
 
   # get :sample, :map => '/sample/url', :provides => [:any, :js] do
   #   case content_type
@@ -50,6 +54,6 @@ ServieSales::App.controllers :order do
   # get '/example' do
   #   'Hello world!'
   # end
-  
+
 
 end

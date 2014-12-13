@@ -2,7 +2,7 @@
 %h2= "User Profile"
 %table{:padding => "20px"}
   %tr
-    %td{:width => "100px"} 
+    %td{:width => "100px"}
       %b= "Username"
     %td{:width => "200px"}= @user.username
   %tr
@@ -19,7 +19,6 @@
     %th{:width => "100px"}= "Slots"
     %th{:width => "100px"}= "Password"
     %th{:width => "100px"}= "Software"
-    %th{:width => "100px"}= "Active"
   - @servers.each do |server|
     %tr
       %td= server.name
@@ -28,4 +27,3 @@
       %td= server.slots
       %td= server.password
       %td= server.software
-      %td= pingServer(server.ip)

@@ -4,9 +4,10 @@
 
 
 body{
-  background: url('/images/fractalBackground.png');
-  background-repeat: no-repeat;
-  background-size: cover;
+  /*background: url('/images/fractalBackground.png');*/
+  background: url('/images/random_grey_variations.png');
+  background-repeat: repeat;
+  /*background-size: cover;*/
 }
 
 .bg{

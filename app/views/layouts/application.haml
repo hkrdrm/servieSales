@@ -1,7 +1,7 @@
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}/
-    %title= ["MumbleBox", @title].compact.join(" || ")
+    %title= ["MumblePlot", @title].compact.join(" || ")
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
     / Le HTML5 shim, for IE6-8 support of HTML elements
@@ -27,11 +27,11 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "#"} MumbleBox
+          %a.brand{:href => "#"} MumblePlot
           .nav-collapse.collapse
             %ul.nav.pull-left
               %li.dropdown
-                %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown"} 
+                %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown"}
                   Users
                   %b.caret
                 %ul.dropdown-menu
@@ -49,9 +49,9 @@
               %li
                 %a{:href => "/contact"} Contact
             %ul.nav.pull-right
-              %li.dropdown.pull-right            
-                - if signed_in? 
-                  %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown"} 
+              %li.dropdown.pull-right
+                - if signed_in?
+                  %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown"}
                     = current_user.displayName
                     %b.caret
                   %ul.dropdown-menu.pull-right{"role" => "menu", "aria-labelledby" => "dLabel"}
@@ -73,7 +73,7 @@
         #main= yield
       %footer
         %div{:id => "wr1"}
-          %div{:id => "cName"} 
+          %div{:id => "cName"}
             &copy; 2014 Spiers Computing LLC
           %div{:id => "stripeTag"}
             %img{:src => "/images/solid.png"}
@@ -88,4 +88,5 @@
     %script{:src => "/javascripts/dropdown.js"}
     %script{:src => "https://js.stripe.com/v2/"}
     %script{:src => "/javascripts/orderForm.js"}
+    //%script{:src => "/javascripts/pingServer.js"}
     %script{:src => "/javascripts/jquery.formatCurrency-1.4.0.min.js"}

@@ -8,12 +8,12 @@
 = form_for :server, url(:servers, :create) do |f2|
   %article
     %p
-      = f2.label :ServerName, :caption => "Server Name"
-      = f2.text_field :serverName
+      = f2.label :name, :caption => "Server Name"
+      = f2.text_field :name
 
     %p
       = f2.label :ServerPass, :caption => "Server Password"
-      = f2.text_field :serverPassword
+      = f2.text_field :password
 
     %p
       = f2.label :SuperUserPassword, :caption => "SuperUser Password"
