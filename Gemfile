@@ -16,7 +16,7 @@ gem 'rake'
 # Component requirements
 gem 'bcrypt'
 gem 'sass'
-gem 'haml', '~> 4.0.6'
+gem 'haml'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'sqlite3'
 gem 'dotenv'

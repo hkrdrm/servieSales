@@ -1,5 +1,5 @@
 ServieSales::App.controllers :users do
-  
+
   get :index, :map => '/users/index' do
     @users = User.all
     render 'index'
@@ -28,6 +28,7 @@ ServieSales::App.controllers :users do
     @user.stripeId = customer.id
     @user.displayName = @user.username
     @user.username = @user.username.downcase
+    @user.admin = false
     if @user.save
       redirect('/')
     else
@@ -40,7 +41,7 @@ ServieSales::App.controllers :users do
     render 'users/new'
   end
 
-    
+
 
 
   # get :sample, :map => '/sample/url', :provides => [:any, :js] do

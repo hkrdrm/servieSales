@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 21) do
+ActiveRecord::Schema.define(version: 23) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 21) do
     t.integer  "price"
     t.integer  "nSlots"
     t.integer  "serverId"
+  end
+
+  create_table "server_nodes", force: true do |t|
+    t.string   "city"
+    t.string   "state"
+    t.integer  "ram"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "servers", force: true do |t|
@@ -96,6 +104,7 @@ ActiveRecord::Schema.define(version: 21) do
     t.string   "username"
     t.string   "stripeId"
     t.string   "displayName"
+    t.boolean  "admin"
   end
 
   add_index "users", ["username"], name: "index_users_on_username", unique: true
