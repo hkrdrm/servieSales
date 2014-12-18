@@ -22,6 +22,7 @@ gem 'sqlite3'
 gem 'dotenv'
 gem 'net-ping'
 gem 'puma'
+gem 'ffi-rzmq'
 
 # Stripe API
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'

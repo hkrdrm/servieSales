@@ -29,6 +29,11 @@ GEM
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
+    ffi (1.9.6)
+    ffi-rzmq (2.0.1)
+      ffi-rzmq-core (>= 1.0.1)
+    ffi-rzmq-core (1.0.3)
+      ffi (~> 1.9)
     haml (4.0.6)
       tilt
     http_router (0.11.1)
@@ -120,6 +125,7 @@ DEPENDENCIES
   activerecord (>= 3.1)
   bcrypt
   dotenv
+  ffi-rzmq
   haml
   net-ping
   padrino

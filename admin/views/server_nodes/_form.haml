@@ -1,0 +1,31 @@
+- error = @server_node.errors.include?(:city)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :city, :class => 'control-label'
+  .controls
+    =f.text_field :city, :class => 'form-control input-large input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:city, :class => 'text-error') : pat(:example)
+- error = @server_node.errors.include?(:state)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :state, :class => 'control-label'
+  .controls
+    =f.text_field :state, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:state, :class => 'text-error') : pat(:example)
+- error = @server_node.errors.include?(:ram)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :ram, :class => 'control-label'
+  .controls
+    =f.text_field :ram, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:ram, :class => 'text-error') : pat(:example)
+- error = @server_node.errors.include?(:ip)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :ip, :class => 'control-label'
+  .controls
+    =f.text_field :ip, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:ip, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:server_nodes, :index), :class => 'btn btn-default'

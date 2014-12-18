@@ -1,13 +1,19 @@
-%h1 ServerNodes
+%h2 ServerNodes
+
+/*- get_all_nodes_status.each do |key, value|
+/*  %p= "#{key} is #{value}"
+
 %table{:padding => "20px", :border => "1px", :width => "100%"}
   %tr
     %th{:width => "100px"}="Id"
     %th{:width => "100px"}="City"
     %th{:width => "100px"}="State"
     %th{:width => "100px"}= "RAM"
+    %th{:width => "100px"}= "Status"
   - @serverNodes.each do |serverNode|
     %tr
       %td= serverNode.id
       %td= serverNode.city
       %td= serverNode.state
       %td= serverNode.ram
+      %td= get_node_status(serverNode.id)
