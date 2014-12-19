@@ -14,8 +14,16 @@
 #   }
 #
 ActiveRecord::Base.configurations[:development] = {
-  :adapter => 'sqlite3',
-  :database => Padrino.root('db', 'servie_sales_development.db')
+  :adapter   => 'mysql2',
+  :encoding  => 'utf8',
+  :reconnect => true,
+  :database  => 'servieSales_development',
+  :pool      => 5,
+  :username  => 'root',
+  :password  => 'nickel.109',
+  :host      => 'localhost',
+  :socket    => '/var/run/mysqld/mysqld.sock'
+
 
 }
 

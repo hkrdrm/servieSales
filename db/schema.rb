@@ -108,6 +108,6 @@ ActiveRecord::Schema.define(version: 24) do
     t.boolean  "admin"
   end
 
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

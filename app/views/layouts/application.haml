@@ -57,6 +57,9 @@
                   %ul.dropdown-menu.pull-right{"role" => "menu", "aria-labelledby" => "dLabel"}
                     %li
                       %a{:href => "/users/show/" + current_user.username} My Account
+                    - if current_user.admin == true
+                      %li
+                        %a{:href => "/server_nodes/index"} Server Nodes
                     %li
                       %a{:href => "/logout"} Logout
                 - else

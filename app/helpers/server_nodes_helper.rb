@@ -21,7 +21,7 @@ module ServieSales
       def get_node_status(ip)
         context = ZMQ::Context.new
         requester = context.socket(ZMQ::REQ)
-        requester.connect("tcp://localhost:5555")
+        requester.connect("tcp://#{ip}:5555")
 
         server_request = {fn: "getStatus"}
 

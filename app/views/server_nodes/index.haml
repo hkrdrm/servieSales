@@ -6,6 +6,7 @@
 %table{:padding => "20px", :border => "1px", :width => "100%"}
   %tr
     %th{:width => "100px"}="Id"
+    %th{:width => "100px"}="IP"
     %th{:width => "100px"}="City"
     %th{:width => "100px"}="State"
     %th{:width => "100px"}= "RAM"
@@ -13,7 +14,8 @@
   - @serverNodes.each do |serverNode|
     %tr
       %td= serverNode.id
+      %td= serverNode.ip
       %td= serverNode.city
       %td= serverNode.state
       %td= serverNode.ram
-      %td= get_node_status(serverNode.id)
+      %td= get_node_status(serverNode.ip)
