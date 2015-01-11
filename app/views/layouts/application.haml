@@ -30,19 +30,8 @@
           %a.brand{:href => "#"} MumblePlot
           .nav-collapse.collapse
             %ul.nav.pull-left
-              %li.dropdown
-                %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown"}
-                  Users
-                  %b.caret
-                %ul.dropdown-menu
-                  %li
-                    %a{:href => "/users/new"}
-                      Register
-                  %li
-                    %a{:href => "/users/index"}
-                      List
               %li
-                %a{:href => "/orders/index"}
+                %a{:href => "/orders/new"}
                   Order
               %li
                 %a{:href => "/static_pages/about"} About
@@ -60,6 +49,8 @@
                     - if current_user.admin == true
                       %li
                         %a{:href => "/server_nodes/index"} Server Nodes
+                      %li
+                        %a{:href => "/users/index"} Users
                     %li
                       %a{:href => "/logout"} Logout
                 - else

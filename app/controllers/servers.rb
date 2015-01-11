@@ -10,7 +10,9 @@ ServieSales::App.controllers :servers do
     @server = Server.new(params[:server])
     @server.userId = current_user.id
     @server.ip = "192.168.0.2"
+    @server.expires = session[:expires]
     if(@server.save)
+      str = create_server(@server.id)
       redirect('/orders/complete')
     else
       render "servers/new"

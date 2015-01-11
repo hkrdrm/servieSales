@@ -6,17 +6,17 @@
   #step= partial 'orders/step', :locals => {:s => "Done", :c => "next", :dot => "/images/whiteDot.png"}
 
 %div{:id => "form"}
-  = form_for :order, url(:orders, :create) do |f|
+  = form_for :order, url(:order, :create) do |f|
     %article
       %p{:class => "slots"}
         = f.label :nSlots, :caption => "Subscription Plan"
         = f.select :nSlots, :options => [['10 Slots - $4.00', '10'], ['20 Slots - $8.00', '20'], ['30 Slots - $12.00', '30'], ['40 Slots - $16.00', '40'], ['50 Slots - $20.00', '50'], ['75 Slots - $30.00', '75'], ['100 Slots - $40.00', '100']], :selected => '10 Slots - $4.00 ', :class => 'nSlots'
-    
-      %table{:class => "yar", :width => "400px"} 
+
+      %table{:class => "yar", :width => "400px"}
         %tr
-          %td Amount: 
+          %td Amount:
           %td{:class => "amount"} $4.00
-      
+
 
     %div{:class => "button" }
-      %script(src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button" data-key="pk_test_4LdbpZTtYUS7OxBSxeiMNkxa" data-amount="400" data-name="Monthly Subscription" data-description="Mumble Server Order")
+      %script(src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button" data-key=@pk data-amount="400" data-name="Monthly Subscription" data-description="Mumble Server Order")

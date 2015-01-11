@@ -19,9 +19,11 @@ module ServieSales
 
       #get status of single node
       def get_node_status(ip)
-        context = ZMQ::Context.new
-        requester = context.socket(ZMQ::REQ)
-        requester.connect("tcp://#{ip}:5555")
+        #context = ZMQ::Context.new
+        #requester = context.socket(ZMQ::REQ)
+        #requester.connect("tcp://#{ip}:5555")
+
+        requester = connect_to_node(ip)
 
         server_request = {fn: "getStatus"}
 
@@ -29,8 +31,30 @@ module ServieSales
 
         reply = ''
         requester.recv_string(reply)
+        repy_json = JSON.parse(reply)
+        repy_json
+      end
 
-        reply
+      def connect_to_node(ip)
+        context = ZMQ::Context.new
+        requester = context.socket(ZMQ::REQ)
+        requester.connect("tcp://#{ip}:5555")
+        requester
+      end
+
+      def get_best_node
+        'localhost'
+      end
+
+      def create_server(id)
+        requester = connect_to_node(get_best_node)
+        server_request = {fn: "createServer", param: id}
+        requester.send_string server_request.to_json
+
+        reply = ''
+        requester.recv_string(reply)
+        repy_json = JSON.parse(reply)
+        repy_json
       end
 
     end

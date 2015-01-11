@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 24) do
+ActiveRecord::Schema.define(version: 27) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 24) do
     t.integer  "price"
     t.integer  "nSlots"
     t.integer  "serverId"
+    t.datetime "expires"
   end
 
   create_table "server_nodes", force: true do |t|
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(version: 24) do
     t.datetime "updated_at"
     t.integer  "port"
     t.string   "superUserPassword"
+    t.datetime "expires"
   end
 
   create_table "subscriptions", force: true do |t|

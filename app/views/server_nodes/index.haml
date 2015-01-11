@@ -10,12 +10,17 @@
     %th{:width => "100px"}="City"
     %th{:width => "100px"}="State"
     %th{:width => "100px"}= "RAM"
-    %th{:width => "100px"}= "Status"
+    %th{:width => "100px"}= "Used Memory"
+    %th{:width => "100px"}= "Free"
+    %th{:width => "100px"}= "Total"
   - @serverNodes.each do |serverNode|
+    - var = get_node_status(serverNode.ip)
     %tr
-      %td= serverNode.id
-      %td= serverNode.ip
-      %td= serverNode.city
-      %td= serverNode.state
-      %td= serverNode.ram
-      %td= get_node_status(serverNode.ip)
+      %td{:align => "center"}= serverNode.id
+      %td{:align => "center"}= serverNode.ip
+      %td{:align => "center"}= serverNode.city
+      %td{:align => "center"}= serverNode.state
+      %td{:align => "center"}= serverNode.ram
+      %td{:align => "center"}= var["percentFree"]
+      %td{:align => "center"}= var["free"]
+      %td{:align => "center"}= var["total"]
