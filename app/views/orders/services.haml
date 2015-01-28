@@ -1,0 +1,36 @@
+%table{:width => "500px"}
+  %tr
+    %td{:id => "sName0"}
+    %td{:id => "sName"}
+  %tr
+    %td{:id => "sPass0"}
+    %td{:id => "sPass"}
+  %tr
+    %td{:id => "sUPass0"}
+    %td{:id => "sUPass"}
+  %tr
+    %td{:id => "sSlots0"}
+    %td{:id => "sSlots"}
+  %tr
+    %td{:id => "price0"}
+    %td{:id => "price"}
+
+%hr
+= form_for :order, url(:cart, :addProduct) do |f2|
+  %article
+    %p
+      = f2.label :name, :caption => "Server Name"
+      = f2.text_field :name, :id => "name"
+
+    %p
+      = f2.label :ServerPass, :caption => "Server Password"
+      = f2.text_field :password, :id => "pass"
+
+    %p
+      = f2.label :SuperUserPassword, :caption => "SuperUser Password"
+      = f2.text_field :superUserPassword, :id => "UPass"
+    %p
+      = f2.label :slots, :caption => "Number of Slots"
+      = f2.number_field :slots, :min => 1, :max => 500, :id => "slots"
+    %p
+      = f2.submit "Add to Cart", :class => 'btn btn-primary'

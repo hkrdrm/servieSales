@@ -12,11 +12,11 @@ ServieSales::App.controllers :order do
       redirect('/')
     end
   end
-##
-  #get :new, :map => '/orders/new' do
-  #  render 'orders/new'
-  #end
-##
+
+  get :services, :map => '/orders/services' do
+    render 'orders/services'
+  end
+
   get :complete, :map => '/orders/complete' do
     render 'orders/complete'
   end

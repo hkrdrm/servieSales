@@ -1,12 +1,9 @@
-ServieSales::App.controllers :static_pages do
+ServieSales::App.controllers :cart do
 
-  get :index, :map => 'index' do
-    render 'index'
-  end
-
-  get :about, :map => '/static_pages/about' do
-    render 'about'
-  end
+  # get :index, :map => '/foo/bar' do
+  #   session[:foo] = 'bar'
+  #   render 'index'
+  # end
 
   # get :sample, :map => '/sample/url', :provides => [:any, :js] do
   #   case content_type
@@ -22,5 +19,13 @@ ServieSales::App.controllers :static_pages do
   #   'Hello world!'
   # end
 
+  post :addProduct do
+    
+  end
+
+  get :index, :map => 'cart/index' do
+    @cart = session[:cart]
+    render 'index'
+  end
 
 end

@@ -1,0 +1,13 @@
+%h2 My Cart
+%table{:border => "1px white solid"}
+  - @cart.items.each do |item|
+    %tr
+      %th Quantity
+      %th Product Name
+      %th Slots
+      %th Price
+    %tr
+      %td= item.quantity
+      %td= item.name
+      %td= item.slots
+      %td= item.price
