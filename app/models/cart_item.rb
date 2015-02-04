@@ -1,15 +1,12 @@
+require 'json'
+
 class CartItem
-  attr_reader :product, :quantity, :slots
+  attr_reader :product, :slots, :order
 
-  def initialize(product, slots)
-    @product = product
-    @quantity = 1
-    @slots = slots
-  end
-
-
-  def increment_quantity
-    @quantity += 1
+  def initialize(product, order)
+    @product = Product.find_by_id(product)
+    @slots = order[:slots].to_i
+    @order = order.to_json
   end
 
   def name
@@ -17,7 +14,7 @@ class CartItem
   end
 
   def price
-    @product.price * @quantity * @slots
+    @product.price.to_f * @slots.to_f * 0.01
   end
 
 end
