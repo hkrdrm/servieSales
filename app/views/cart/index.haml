@@ -1,15 +1,23 @@
 %h2 My Cart
-%table{:border => "1px white solid"}
-  - if @cart.items.any?
-    %tr
-      %th
-      %th Product Name
-      %th Slots
-      %th Price
+%table{:border => "1px white solid", :width => "100%"}
+  %p= @cart.id
+  //- if @cart.items.any?
+  %tr
+    %th{:class => "front"}
+    %th Product Name
+    %th Slots
+    %th{:class => "end"} Price
   - @cart.items.each do |item|
     %tr
-      %td
-      %td= item.name
-      %td= item.slots
-      %td= number_to_currency(item.price)
-%span{:class => "glyphicon glyphicon-align-left", :'aria-hidden' => "true"}
+      %td.minus
+        %span{:class => "glyphicon glyphicon-plus-sign", :'aria-hidden' => "true"}
+      %td= item['name']
+      %td= item['slots']
+      %td= number_to_currency(item['slots'])
+//    %tr
+//      %td{:colspan => "4"}
+//        %div.hiddenPane
+//          - item.order.each do |key, val|
+//            %div.keyValRow
+//              %div.key= key.capitalize + ":"
+//              %div.val= val

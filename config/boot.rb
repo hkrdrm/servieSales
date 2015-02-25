@@ -11,6 +11,8 @@ Bundler.require(:default, RACK_ENV)
 require 'dotenv'
 Dotenv.load ".env.#{Padrino.env}"
 
+$redis = Redis.new(:host => 'localhost', :port => 6379)
+$redis.set('cartId', 0)
 ##
 # ## Enable devel logging
 #

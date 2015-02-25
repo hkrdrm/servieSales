@@ -17,17 +17,17 @@ body{
   height: 200px;
 }
 
-.hero-unit{
+.jumbotron{
   background: url('/images/heroBackground.png');
   color: white;
   position: relative;
-  top: -200px;
+  /*top: -200px;*/
 }
 
 footer{
   color: white;
   position: relative;
-  top: -200px;
+  /*top: -200px;*/
   margin: 0 auto;
 }
 
@@ -73,8 +73,39 @@ footer{
 }
 table{
   color: white;
-  border: white;
+  border: none;
+}
+th{
+  background-color: #575757;
+}
+th.front{
+  border-top-left-radius: 5px;
+}
+th.end{
+  border-top-right-radius: 5px;
+}
+td{
+  /*padding: 5px;*/
 }
 
+label{
+    width: 200px;
+}
 
+input{
+  color: #000;
+}
 
+.key{
+  width: 300px;
+  float: left;
+}
+
+.val{
+  width: 300px;
+  float: left;
+}
+.keyValRow{
+  width: 700px;
+  position: relative;
+}

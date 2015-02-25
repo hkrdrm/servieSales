@@ -20,7 +20,7 @@ ServieSales::App.controllers :cart do
   # end
 
   post :addProduct, :map => 'cart/addProduct' do
-    @cart = session[:cart]
+    @cart = Cart.new(session[:cart])
     @order = Hash.new
     @order = params[:order]
     @cart.add_product(1, @order)
@@ -28,7 +28,7 @@ ServieSales::App.controllers :cart do
   end
 
   get :index, :map => 'cart/index' do
-    @cart = session[:cart]
+    @cart = Cart.redis.get('someKey')
     render 'index'
   end
 

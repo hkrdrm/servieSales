@@ -1,6 +1,7 @@
 require 'json'
+require "ohm"
 
-class CartItem
+class CartItem < Ohm::Model
   attr_reader :product, :slots, :order
 
   def initialize(product, order)
@@ -11,6 +12,10 @@ class CartItem
 
   def name
     @product.name
+  end
+
+  def order
+    var = JSON.parse(@order)
   end
 
   def price

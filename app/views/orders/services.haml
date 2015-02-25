@@ -17,20 +17,17 @@
 
 %hr
 = form_for :order, url(:cart, :addProduct) do |f2|
-  %article
-    %p
-      = f2.label :name, :caption => "Server Name"
-      = f2.text_field :name, :id => "name"
-
-    %p
-      = f2.label :ServerPass, :caption => "Server Password"
-      = f2.text_field :password, :id => "pass"
-
-    %p
-      = f2.label :SuperUserPassword, :caption => "SuperUser Password"
-      = f2.text_field :superUserPassword, :id => "UPass"
-    %p
-      = f2.label :slots, :caption => "Number of Slots"
-      = f2.number_field :slots, :min => 1, :max => 500, :id => "slots"
-    %p
-      = f2.submit "Add to Cart", :class => 'btn btn-primary'
+  
+  = f2.label :name, :caption => "Server Name"
+  = f2.text_field :name, :id => "name"
+  %br
+  = f2.label :ServerPass, :caption => "Server Password"
+  = f2.text_field :password, :id => "pass"
+  %br
+  = f2.label :SuperUserPassword, :caption => "SuperUser Password"
+  = f2.text_field :superUserPassword, :id => "UPass"
+  %br
+  = f2.label :slots, :caption => "Number of Slots"
+  = f2.number_field :slots, :min => 1, :max => 500, :id => "slots"
+  %br
+    = f2.submit "Add to Cart", :class => 'btn btn-primary'

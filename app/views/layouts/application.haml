@@ -20,50 +20,50 @@
     %link{:href => "images/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}/
     %link{:href => "images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
   %body
-    .navbar.navbar-fixed-top.navbar-inverse
-      .navbar-inner
-        .container
-          %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+    %nav{:class => "navbar navbar-inverse navbar-fixed-top"}
+      .container
+        .navbar-header
+          %button.navbar-toggle.collapsed{:type => "button", "data-target" => "#navbar", "data-toggle" => "collapse", "aria-expanded" => "false", "aria-controls" => "navbar"}
+            %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "#"} MumblePlot
-          .nav-collapse.collapse
-            %ul.nav.pull-left
-              %li
-                %a{:href => "/orders/new"}
-                  Order
-              %li
-                %a{:href => "/static_pages/about"} About
-              %li
-                %a{:href => "/contact"} Contact
-            %ul.nav.pull-right
-              %li.dropdown.pull-right
-                - if signed_in?
-                  %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown"}
-                    = current_user.displayName
-                    %b.caret
-                  %ul.dropdown-menu.pull-right{"role" => "menu", "aria-labelledby" => "dLabel"}
-                    %li
-                      %a{:href => "/users/show/" + current_user.username} My Account
-                    - if current_user.admin == true
-                      %li
-                        %a{:href => "/server_nodes/index"} Server Nodes
-                      %li
-                        %a{:href => "/users/index"} Users
-                    %li
-                      %a{:href => "/logout"} Logout
-                - else
+          %a.navbar-brand{:href => "#"} MumblePlot
+        %div.navbar-collapse.collapse{:id => "navbar"}
+          %ul.nav.navbar-nav
+            %li
+              %a{:href => "/orders/new"}
+                Order
+            %li
+              %a{:href => "/static_pages/about"} About
+            %li
+              %a{:href => "/contact"} Contact
+          %ul.nav.navbar-nav.navbar-right
+            %li.dropdown
+              - if signed_in?
+                %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "aria-expanded" => "false"}
+                  = current_user.displayName
+                  %span.caret
+                %ul.dropdown-menu{:role => "menu"}
                   %li
-                    %a{:href => "/login"} Login
+                    %a{:href => "/users/show/" + current_user.username} My Account
+                  - if current_user.admin == true
+                    %li
+                      %a{:href => "/server_nodes/index"} Server Nodes
+                    %li
+                      %a{:href => "/users/index"} Users
                   %li
-                    %a{:href => "/users/new"} Register
+                    %a{:href => "/logout"} Logout
+              - else
+                %li
+                  %a{:href => "/login"} Login
+                %li
+                  %a{:href => "/users/new"} Register
 
           / /.nav-collapse
-    .container
-      .bg
+    %div{:class => "container theme-showcase", :role => "main"}
       / Main hero unit for a primary marketing message or call to action
-      .hero-unit
+      .jumbotron
         #main= yield
       %footer
         %div{:id => "wr1"}
@@ -83,4 +83,5 @@
     %script{:src => "https://js.stripe.com/v2/"}
     %script{:src => "/javascripts/orderForm.js"}
     %script{:src => "/javascripts/form.js"}
+    %script{:src => "/javascripts/slideToggle.js"}
     %script{:src => "/javascripts/jquery.formatCurrency-1.4.0.min.js"}

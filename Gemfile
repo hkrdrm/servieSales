@@ -24,6 +24,9 @@ gem 'net-ping'
 gem 'puma'
 gem 'ffi-rzmq'
 gem 'mysql2'
+gem 'redis'
+gem 'redis-objects'
+gem 'ohm'
 
 # Stripe API
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'

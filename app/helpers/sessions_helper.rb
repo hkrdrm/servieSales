@@ -1,3 +1,4 @@
+require 'json'
 # Helper methods defined here can be accessed in any controller or view in the application
 
 module ServieSales
@@ -13,7 +14,8 @@ module ServieSales
 
       def sign_in(user)
         session[:current_user] = user.id
-        session[:cart] = Cart.new
+        @cart = Cart.new
+        session[:cart] = @cart.id
         self.current_user = user
       end
 
