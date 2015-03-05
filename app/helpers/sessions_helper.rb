@@ -21,6 +21,8 @@ module ServieSales
 
       def sign_out
         session.delete(:current_user)
+        @cart = Cart.new(session[:cart])
+        @cart.delete_cart
         session.delete(:cart)
       end
 

@@ -1,7 +1,7 @@
 require 'json'
 require "ohm"
 
-class CartItem < Ohm::Model
+class CartItem
   attr_reader :product, :slots, :order
 
   def initialize(product, order)

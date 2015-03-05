@@ -24,11 +24,11 @@ ServieSales::App.controllers :cart do
     @order = Hash.new
     @order = params[:order]
     @cart.add_product(1, @order)
-    render 'cart/index'
+    redirect 'cart/index'
   end
 
   get :index, :map => 'cart/index' do
-    @cart = Cart.redis.get('someKey')
+    @cart = Cart.new(session[:cart])
     render 'index'
   end
 

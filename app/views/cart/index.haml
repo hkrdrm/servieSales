@@ -1,6 +1,5 @@
 %h2 My Cart
 %table{:border => "1px white solid", :width => "100%"}
-  %p= @cart.id
   //- if @cart.items.any?
   %tr
     %th{:class => "front"}
@@ -11,13 +10,24 @@
     %tr
       %td.minus
         %span{:class => "glyphicon glyphicon-plus-sign", :'aria-hidden' => "true"}
-      %td= item['name']
-      %td= item['slots']
-      %td= number_to_currency(item['slots'])
-//    %tr
-//      %td{:colspan => "4"}
-//        %div.hiddenPane
-//          - item.order.each do |key, val|
-//            %div.keyValRow
-//              %div.key= key.capitalize + ":"
-//              %div.val= val
+      %td= item['product']
+      %td= item['nSlots']
+      %td= number_to_currency((item['nSlots'].to_i * 40) * 0.01)
+    %tr
+      %td{:colspan => "4"}
+        %div.hiddenPane
+          %div.keyValRow
+            %div.key Server Name
+            %div.val= item['name']
+            %div.key Password
+            %div.val= item['password']
+            %div.key Super User Password
+            %div.val= item['superUserPassword']
+  %tr
+    %td{:colspan => "3", :align => "right"}Total:
+    %td
+      %span{:style => "font-weight: bold"}= number_to_currency(@cart.total_price)
+%div{:id => "form"}
+  = form_for :order, url(:order, :create) do |f|
+    %div{:class => "button" }
+      %script(src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button" data-key="#{ENV['STRIPE_PUBLIC_KEY']}" data-amount="#{@cart.total_price * 100}" data-name="Monthly Subscription" data-description="Mumble Server Order")

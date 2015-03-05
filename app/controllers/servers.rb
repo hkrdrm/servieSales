@@ -5,7 +5,7 @@ ServieSales::App.controllers :servers do
     render 'servers/new'
   end
 
-  post :create do
+  post :create, :map => 'servers/create/' do
     @order = Order.getCurrentOrder(current_user.id)
     @server = Server.new(params[:server])
     @server.userId = current_user.id
@@ -13,7 +13,7 @@ ServieSales::App.controllers :servers do
     @server.expires = session[:expires]
     if(@server.save)
       str = create_server(@server.id)
-      redirect('/orders/complete')
+      redirect('/orders/checkoutComplete')
     else
       render "servers/new"
     end
