@@ -8,3 +8,4 @@ threads    1, 3 # min, max
 pidfile    "/home/hkrdrm/tmp/puma/puma_servieSales.pid" # puma folder must exist
 state_path "/home/hkrdrm/tmp/puma/state"
 activate_control_app
+port 7001
