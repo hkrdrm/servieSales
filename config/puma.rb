@@ -1,4 +1,4 @@
-environment ENV['RAILS_ENV'] || 'production'
+environment ENV['RAILS_ENV'] || 'development'
 bind 'unix:///tmp/servieSales.sock'
 daemonize false
 

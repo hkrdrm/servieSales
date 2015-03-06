@@ -43,13 +43,13 @@ ActiveRecord::Schema.define(version: 35) do
   create_table "orders", force: true do |t|
     t.integer  "userId"
     t.integer  "subscriptionId"
+    t.string   "paymentMethod"
     t.boolean  "paid"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "price"
     t.integer  "nSlots"
     t.integer  "serverId"
-    t.datetime "expires"
   end
 
   create_table "products", force: true do |t|
@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 35) do
     t.datetime "updated_at"
     t.integer  "port"
     t.string   "superUserPassword"
-    t.datetime "expires"
   end
 
   create_table "subscriptions", force: true do |t|
@@ -118,6 +117,6 @@ ActiveRecord::Schema.define(version: 35) do
     t.boolean  "admin"
   end
 
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end
