@@ -30,7 +30,7 @@ ServieSales::App.controllers :order do
       server.ip = "192.168.0.2"
       server.expires = session[:expires]
       if(server.save)
-        str = create_server(server.id)
+        #str = create_server(server.id)
       else
         # Need to redirect to error page if save fails
       end

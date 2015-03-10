@@ -32,12 +32,10 @@
         %div.navbar-collapse.collapse{:id => "navbar"}
           %ul.nav.navbar-nav
             %li
-              %a{:href => "/orders/new"}
+              %a{:href => "/orders/services"}
                 Order
             %li
               %a{:href => "/static_pages/about"} About
-            %li
-              %a{:href => "/contact"} Contact
           %ul.nav.navbar-nav.navbar-right
             %li.dropdown
               - if signed_in?
