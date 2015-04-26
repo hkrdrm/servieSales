@@ -28,7 +28,7 @@ ServieSales::App.controllers :order do
                           :slots => item['slots'])
       server.userId = current_user.id
       server.ip = "192.168.0.2"
-      server.expires = session[:expires]
+      server.expires = session['expires']
       if(server.save)
         #str = create_server(server.id)
       else
@@ -52,11 +52,12 @@ ServieSales::App.controllers :order do
     # Get the credit card details submitted by the form
     token = params[:stripeToken]
     @order = Order.new
-    @order.userId = current_user.id.to_i
+    @order.userId = current_user
     @order.price = (@cart.total_price * 100).to_i
 
     customer = Stripe::Customer.retrieve(current_user.stripeId)
     customer.source = token
+    customer.save
     @cart.items.each do |item|
       subscription = customer.subscriptions.create(:plan => "mumbleMonthly",
                                                    :quantity => item['nSlots'])

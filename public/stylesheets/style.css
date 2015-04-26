@@ -10,6 +10,25 @@ body{
   /*background-size: cover;*/
 }
 
+.productPanel{
+  width: 300px;;
+  margin: 25px;
+  background-color: #FFF;
+  color: black;
+  float: left;
+}
+.productHeader{
+  color: #fff;
+  margin-top: 0px;
+  background-color: #2474e0;
+}
+
+.wrap{
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  width: 1050px;
+}
 .bg{
   background: url('/images/mumbleLogo.png');
   background-repeat: no-repeat;
@@ -21,6 +40,7 @@ body{
   background: url('/images/heroBackground.png');
   color: white;
   position: relative;
+  overflow: hidden;
   /*top: -200px;*/
 }
 
