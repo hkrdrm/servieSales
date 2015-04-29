@@ -16,10 +16,14 @@ body{
   background-color: #FFF;
   color: black;
   float: left;
+  border-radius: 10px;
 }
 .productHeader{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   color: #fff;
   margin-top: 0px;
+  text-align: center;
   background-color: #2474e0;
 }
 
