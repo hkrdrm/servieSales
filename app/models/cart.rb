@@ -31,6 +31,18 @@ class Cart
     @items
   end
 
+  def count
+    @items.count
+  end
+
+  def empty
+    if(@items.count == 0)
+      true
+    else
+      false
+    end
+  end
+
   def add_product(product, order)
     itemId = $redis.INCR('itemId')
     $redis.RPUSH("itemLists:#{id}", "#{itemId}")

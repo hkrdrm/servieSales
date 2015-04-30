@@ -37,6 +37,12 @@
             %li
               %a{:href => "/static_pages/about"} About
           %ul.nav.navbar-nav.navbar-right
+            - if !Cart.new(session[:cart]).empty
+              %li
+                %a{:href => "/cart/index"}
+                  Cart
+                  %span{:id => "cartBubble", :class => "label label-primary"}
+                    = Cart.new(session[:cart]).count
             %li.dropdown
               - if signed_in?
                 %a.dropdown-toggle{:href => "#", "role" => "button", "data-toggle" => "dropdown", "aria-expanded" => "false"}

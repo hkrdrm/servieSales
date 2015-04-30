@@ -55,6 +55,10 @@ footer{
   margin: 0 auto;
 }
 
+#cartBubble{
+  position: relative;
+  top: -3px;
+}
 #cName{
   display: inline-block;
   width: 49%;
