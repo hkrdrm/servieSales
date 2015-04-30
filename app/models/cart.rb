@@ -23,16 +23,26 @@ class Cart
     @items.sum {|item| (item['nSlots'].to_i * 40) * 0.01 }
   end
 
+  ##
   def id
     @id
   end
 
+  ##
   def items
     @items
   end
 
+  # Return number of items
   def count
     @items.count
+  end
+
+  #Remove an item from the list
+  def delete_item itemID
+    $redis.DEL("items:#{itemID}")
+    @itemIds.delete(itemID)
+    $redis.LREM("itemLists:#{id}", "#{itemID}")
   end
 
   def empty

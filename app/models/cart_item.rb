@@ -2,7 +2,7 @@ require 'json'
 require "ohm"
 
 class CartItem
-  attr_reader :product, :slots, :order
+  attr_reader :product, :slots, :order, :listId
 
   def initialize(product, order)
     @product = Product.find_by_id(product)
