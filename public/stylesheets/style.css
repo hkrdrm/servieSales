@@ -54,7 +54,11 @@ footer{
   /*top: -200px;*/
   margin: 0 auto;
 }
-
+#deleteBubble{
+  text-align: center;
+  width: 10px;
+  padding: 5px;
+}
 #cartBubble{
   position: relative;
   top: -3px;

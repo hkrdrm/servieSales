@@ -6,6 +6,7 @@
     %th Product Name
     %th Slots
     %th{:class => "end"} Price
+    %th
   - @cart.items.each do |item|
     %tr
       %td.minus
@@ -13,8 +14,11 @@
       %td= item['product']
       %td= item['nSlots']
       %td= number_to_currency((item['nSlots'].to_i * 40) * 0.01)
+      %td{:id => "deleteBubble"}
+        %span{:class => "label label-danger"}
+          X
     %tr
-      %td{:colspan => "4"}
+      %td{:colspan => "5"}
         %div.hiddenPane
           %div.keyValRow
             %div.key Server Name
@@ -24,7 +28,7 @@
             %div.key Super User Password
             %div.val= item['superUserPassword']
   %tr
-    %td{:colspan => "3", :align => "right"}Total:
+    %td{:colspan => "4", :align => "right"}Total:
     %td
       %span{:style => "font-weight: bold"}= number_to_currency(@cart.total_price)
 %div{:id => "form"}
