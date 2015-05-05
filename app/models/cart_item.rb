@@ -8,6 +8,7 @@ class CartItem
     @product = Product.find_by_id(product)
     @slots = order[:slots].to_i
     @order = order.to_json
+    @listId = ListId
   end
 
   def name

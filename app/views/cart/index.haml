@@ -15,8 +15,9 @@
       %td= item['nSlots']
       %td= number_to_currency((item['nSlots'].to_i * 40) * 0.01)
       %td{:id => "deleteBubble"}
-        %span{:class => "label label-danger"}
-          X
+        %a{:href => "/cart/deleteProduct/#{item['listId']}"}
+          %span{:class => "label label-danger"}
+            X
     %tr
       %td{:colspan => "5"}
         %div.hiddenPane

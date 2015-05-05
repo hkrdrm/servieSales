@@ -27,6 +27,18 @@ ServieSales::App.controllers :cart do
     redirect 'cart/index'
   end
 
+  get :deleteProduct, :map => 'cart/deleteProduct/:id' do
+    @cart = Cart.new(session[:cart])
+    if(@cart.count == 1)
+      session[:cart] = nil
+    end
+    @cart.delete_item(params[:id])
+    redirect 'cart/index'
+  end
+
+  get :test, :map => 'cart/test' do
+  end
+
   get :index, :map => 'cart/index' do
     @cart = Cart.new(session[:cart])
     render 'index'

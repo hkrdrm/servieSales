@@ -38,13 +38,7 @@ class Cart
     @items.count
   end
 
-  #Remove an item from the list
-  def delete_item itemID
-    $redis.DEL("items:#{itemID}")
-    @itemIds.delete(itemID)
-    $redis.LREM("itemLists:#{id}", "#{itemID}")
-  end
-
+  #is empty?
   def empty
     if(@items.count == 0)
       true
@@ -53,12 +47,21 @@ class Cart
     end
   end
 
+  ##
   def add_product(product, order)
     itemId = $redis.INCR('itemId')
     $redis.RPUSH("itemLists:#{id}", "#{itemId}")
     @itemIds << itemId
     order['product'] = 'Mumble Server'
+    order['listId'] = $redis.GET('itemId')
     $redis.SET("items:#{itemId}", order.to_json)
+  end
+
+  #Remove an item from the list
+  def delete_item(itemID)
+    $redis.DEL("items:#{itemID}")
+    @itemIds.delete(itemID)
+    $redis.LREM("itemLists:#{id}", -1, "#{itemID}")
   end
 
   def delete_cart
