@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 36) do
+ActiveRecord::Schema.define(version: 37) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -40,16 +40,26 @@ ActiveRecord::Schema.define(version: 36) do
     t.datetime "updated_at"
   end
 
+  create_table "messages", force: true do |t|
+    t.integer  "userId"
+    t.string   "subject"
+    t.string   "body"
+    t.string   "from"
+    t.boolean  "notify"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "orders", force: true do |t|
     t.integer  "userId"
     t.integer  "subscriptionId"
-    t.string   "paymentMethod"
     t.boolean  "paid"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "price"
     t.integer  "nSlots"
     t.integer  "serverId"
+    t.datetime "expires"
   end
 
   create_table "products", force: true do |t|
@@ -118,6 +128,6 @@ ActiveRecord::Schema.define(version: 36) do
     t.boolean  "admin"
   end
 
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end

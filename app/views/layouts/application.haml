@@ -37,6 +37,12 @@
             %li
               %a{:href => "/static_pages/about"} About
           %ul.nav.navbar-nav.navbar-right
+            - if(Message.where(userId: current_user.id, notify: true).count > 0)
+              %li
+                %a{:href => "#"}
+                  Notify
+                  %span{:id => "cartBubble", :class => "label label-danger"}
+                    = Message.count(:conditions => {:notify => true})
             - if !Cart.new(session[:cart]).empty
               %li
                 %a{:href => "/cart/index"}
