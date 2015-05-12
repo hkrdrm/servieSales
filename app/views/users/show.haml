@@ -21,10 +21,10 @@
     %th{:width => "100px"}= "Software"
   - @servers.each do |server|
     %tr
-      %td= server.name
+      %td
+        %a{:href => "/servers/show/#{server.id}"}= server.name
       %td= server.ip
       %td= server.port
       %td= server.slots
       %td= server.password
       %td= server.software
-      

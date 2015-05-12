@@ -1,0 +1,19 @@
+- @title = @server.name
+%h2= "Server - " + @server.name
+%table{:padding => "20px"}
+  %tr
+    %td{:width => "100px"}
+      %b= "Server"
+    %td{:width => "500px"}= @server.name
+  %tr
+    %td
+      %b= "IP"
+    %td= @server.ip
+  %tr
+    %td
+      %b= "expires"
+    %td= @server.expires
+  %tr
+    %td{:height => "35px"}
+      %a{:href => "/server/endSubscription/" + @server.subscriptionId}
+        %span{:id => "cartBubble", :class => "label label-danger"} End Subscription

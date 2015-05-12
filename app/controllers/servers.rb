@@ -19,6 +19,18 @@ ServieSales::App.controllers :servers do
     end
   end
 
+  get :show, :map => '/servers/show/:sid' do
+    @server = Server.find_by_id(params[:sid])
+    render "servers/show"
+  end
+
+  get :endSubscription, :map => '/server/endSubscription/:sid' do
+    server = Server.find_by_id(params[:sid])
+    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+    customer = Stripe::Customer.retrieve(current_user.stripeId)
+    subscription = customer.subscriptions.retrieve(server.subscriptionId).delete
+  end
+
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
   #   render 'index'

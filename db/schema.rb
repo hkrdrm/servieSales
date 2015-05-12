@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 37) do
+ActiveRecord::Schema.define(version: 38) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 37) do
     t.integer  "port"
     t.string   "superUserPassword"
     t.datetime "expires"
+    t.string   "subscriptionId"
   end
 
   create_table "subscriptions", force: true do |t|

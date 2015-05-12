@@ -20,22 +20,7 @@ ServieSales::App.controllers :order do
   get :checkoutComplete, :map => '/orders/checkoutComplete' do
     @order = Order.getCurrentOrder(current_user.id)
     @cart = Cart.new(session[:cart])
-
-    @cart.items.each do |item|
-      server = Server.new(:name => item['name'],
-                          :password => item['password'],
-                          :superUserPassword => item['superUserPassword'],
-                          :slots => item['slots'])
-      server.userId = current_user.id
-      server.ip = "192.168.0.2"
-      server.expires = session['expires']
-      if(server.save)
-        #str = create_server(server.id)
-      else
-        # Need to redirect to error page if save fails
-      end
-    end
-
+    @cart.delete_cart
     render 'orders/checkoutComplete'
   end
 
@@ -62,6 +47,19 @@ ServieSales::App.controllers :order do
       subscription = customer.subscriptions.create(:plan => "mumbleMonthly",
                                                    :quantity => item['nSlots'])
       session[:expires] = DateTime.strptime(subscription.current_period_end.to_s, '%s')
+      server = Server.new(:name => item['name'],
+                          :password => item['password'],
+                          :superUserPassword => item['superUserPassword'],
+                          :slots => item['slots'],
+                          :userId => current_user.id,
+                          :ip => "192.168.0.2",
+                          :expires => session['expires'],
+                          :subscriptionId => subscription.id)
+      if(server.save)
+        #str = create_server(server.id)
+      else
+        # Need to redirect to error page if save fails
+      end
     end
 
     if(@order.save)

@@ -2,10 +2,10 @@
 %table{:border => "1px white solid", :width => "100%"}
   //- if @cart.items.any?
   %tr
-    %th{:class => "front"}
+    %th
     %th Product Name
     %th Slots
-    %th{:class => "end"} Price
+    %th Price
     %th
   - @cart.items.each do |item|
     %tr
