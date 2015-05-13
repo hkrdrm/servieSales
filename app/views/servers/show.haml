@@ -14,6 +14,7 @@
       %b= "expires"
     %td= @server.expires
   %tr
-    %td{:height => "35px"}
-      %a{:href => "/server/endSubscription/" + @server.subscriptionId}
-        %span{:id => "cartBubble", :class => "label label-danger"} End Subscription
+    - if (@server.subscriptionId != nil)
+      %td{:height => "35px"}
+        %a{:href => "/servers/endSubscription/" + @server.id.to_s}
+          %span{:id => "cartBubble", :class => "label label-danger"} End Subscription
