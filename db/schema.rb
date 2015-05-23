@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 39) do
+ActiveRecord::Schema.define(version: 41) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 39) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "config_options", force: true do |t|
+    t.string   "option"
+    t.string   "possible_settings"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "config_options", ["option"], name: "index_config_options_on_option", unique: true, using: :btree
 
   create_table "invoices", force: true do |t|
     t.integer  "userId"
