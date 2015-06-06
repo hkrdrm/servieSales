@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 41) do
+ActiveRecord::Schema.define(version: 42) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 41) do
     t.string   "possible_settings"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "user_editable"
   end
 
   add_index "config_options", ["option"], name: "index_config_options_on_option", unique: true, using: :btree

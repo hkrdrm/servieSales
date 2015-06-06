@@ -1,0 +1,5 @@
+= form_for :config_option, url(:config_options, :set) do |form|
+  - @c_options.each do |c_option|
+    %p
+      = form.label :yar, :caption => c_option.option
+      = form.text_field :yar, :id => c_option.option
