@@ -14,6 +14,7 @@
 %table{:padding => "20px", :border => "1px", :width => "100%"}
   %tr
     %th{:width => "100px"}="Name"
+    %th{:width => "100px"}="ID"
     %th{:width => "100px"}="IP"
     %th{:width => "100px"}="Port"
     %th{:width => "100px"}= "Slots"
@@ -23,6 +24,7 @@
     %tr
       %td
         %a{:href => "/servers/show/#{server.id}"}= server.name
+      %td= server.id
       %td= server.ip
       %td= server.port
       %td= server.slots

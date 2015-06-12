@@ -1,4 +1,4 @@
-ServieSales::App.controllers :config_options do
+ServieSales::App.controllers :server_configs do
 
   # get :index, :map => '/foo/bar' do
   #   session[:foo] = 'bar'
@@ -24,9 +24,9 @@ ServieSales::App.controllers :config_options do
   end
 
   post :set do
-    @config_option = new ConfigOption(params[:config_option])
-    @config_option.server_id = session[:server_id]
-    if(config_option.save)
+    @server_config = ServerConfig.new(params[:server_config])
+    @server_config.server_id = session[:server_id]
+    if(@server_config.save)
       #use 0MQ to send config to server
     end
   end
@@ -35,7 +35,7 @@ ServieSales::App.controllers :config_options do
     @c_options = ConfigOption.all
     render 'index'
   end
-  get :show, :map => '/config_options/show/:sid' do
+  get :show, :map => '/server_configs/show/:sid' do
     @c_options = ConfigOption.all
     @server = Server.find_by_id(params[:sid])
     session[:server_id] = params[:sid]

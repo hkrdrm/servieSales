@@ -1,0 +1,167 @@
+- @title = @server.name
+%h2= "Server Config"
+%table{:padding => "20px"}
+  %tr
+    %td{:width => "200px"}
+      %b= "Server Name"
+    %td{:width => "200px"}= @server.name
+  %tr
+    %td
+      %b= "Server IP"
+    %td= @server.ip
+%hr
+= form_for :server_config, url(:server_configs, :set) do |form|
+  %p
+    = form.label :database, :class => "config", :caption => "database"
+    = form.text_field :database, :id => "database"
+
+  %p
+    = form.label :dbus, :class => "config", :caption => "dbus"
+    = form.text_field :dbus, :id => "dbus"
+
+  %p
+    = form.label :dbusservice, :class => "config", :caption => "dbusservice"
+    = form.text_field :dbusservice, :id => "dbusservice"
+
+  %p
+    = form.label :ice, :class => "config", :caption => "ice"
+    = form.text_field :ice, :id => "ice"
+
+  %p
+    = form.label :icesecretread, :class => "config", :caption => "icesecretread"
+    = form.text_field :icesecretread, :id => "icesecretread"
+
+  %p
+    = form.label :icesecretwrite, :class => "config", :caption => "icesecretwrite"
+    = form.text_field :icesecretwrite, :id => "icesecretwrite"
+
+  %p
+    = form.label :autobanAttempts, :class => "config", :caption => "autobanAttempts"
+    = form.text_field :autobanAttempts, :id => "autobanAttempts"
+
+  %p
+    = form.label :autobanTimeframe, :class => "config", :caption => "autobanTimeframe"
+    = form.text_field :autobanTimeframe, :id => "autobanTimeframe"
+
+  %p
+    = form.label :password, :class => "config", :caption => "password"
+    = form.text_field :password, :id => "password"
+
+  %p
+    = form.label :uname, :class => "config", :caption => "uname"
+    = form.text_field :uname, :id => "uname"
+
+  %p
+    = form.label :obfuscate, :class => "config", :caption => "obfuscate"
+    = form.text_field :obfuscate, :id => "obfuscate"
+
+  %p
+    = form.label :sendversion, :class => "config", :caption => "sendversion"
+    = form.text_field :sendversion, :id => "sendversion"
+
+  %p
+    = form.label :allowping, :class => "config", :caption => "allowping"
+    = form.text_field :allowping, :id => "allowping"
+
+  %p
+    = form.label :logfile, :class => "config", :caption => "logfile"
+    = form.text_field :logfile, :id => "logfile"
+
+  %p
+    = form.label :logdays, :class => "config", :caption => "logdays"
+    = form.text_field :logdays, :id => "logdays"
+
+  %p
+    = form.label :welcometext, :class => "config", :caption => "welcometext"
+    = form.text_field :welcometext, :id => "welcometext"
+
+  %p
+    = form.label :port, :class => "config", :caption => "port"
+    = form.text_field :port, :id => "port"
+
+  %p
+    = form.label :sslCert, :class => "config", :caption => "sslCert"
+    = form.text_field :sslCert, :id => "sslCert"
+
+  %p
+    = form.label :sslKey, :class => "config", :caption => "sslKey"
+    = form.text_field :sslKey, :id => "sslKey"
+
+  %p
+    = form.label :bonjour, :class => "config", :caption => "bonjour"
+    = form.text_field :bonjour, :id => "bonjour"
+
+  %p
+    = form.label :bandwidth, :class => "config", :caption => "bandwidth"
+    = form.text_field :bandwidth, :id => "bandwidth"
+
+  %p
+    = form.label :timeout, :class => "config", :caption => "timeout"
+    = form.text_field :timeout, :id => "timeout"
+
+  %p
+    = form.label :usersperchannel, :class => "config", :caption => "usersperchannel"
+    = form.text_field :usersperchannel, :id => "usersperchannel"
+
+  %p
+    = form.label :channelname, :class => "config", :caption => "channelname"
+    = form.text_field :channelname, :id => "channelname"
+
+  %p
+    = form.label :username, :class => "config", :caption => "username"
+    = form.text_field :username, :id => "username"
+
+  %p
+    = form.label :defaultchannel, :class => "config", :caption => "defaultchannel"
+    = form.text_field :defaultchannel, :id => "defaultchannel"
+
+  %p
+    = form.label :rememberchannel, :class => "config", :caption => "rememberchannel"
+    = form.text_field :rememberchannel, :id => "rememberchannel"
+
+  %p
+    = form.label :textmessagelength, :class => "config", :caption => "textmessagelength"
+    = form.text_field :textmessagelength, :id => "textmessagelength"
+
+  %p
+    = form.label :imagemessagelength, :class => "config", :caption => "imagemessagelength"
+    = form.text_field :imagemessagelength, :id => "imagemessagelength"
+
+  %p
+    = form.label :allowhtml, :class => "config", :caption => "allowhtml"
+    = form.text_field :allowhtml, :id => "allowhtml"
+
+  %p
+    = form.label :opusthreshold, :class => "config", :caption => "opusthreshold"
+    = form.text_field :opusthreshold, :id => "opusthreshold"
+
+  %p
+    = form.label :registerName, :class => "config", :caption => "registerName"
+    = form.text_field :registerName, :id => "registerName"
+
+  %p
+    = form.label :registerPassword, :class => "config", :caption => "registerPassword"
+    = form.text_field :registerPassword, :id => "registerPassword"
+
+  %p
+    = form.label :registerUrl, :class => "config", :caption => "registerUrl"
+    = form.text_field :registerUrl, :id => "registerUrl"
+
+  %p
+    = form.label :registerHostname, :class => "config", :caption => "registerHostname"
+    = form.text_field :registerHostname, :id => "registerHostname"
+
+  %p
+    = form.label :suggestVersion, :class => "config", :caption => "suggestVersion"
+    = form.text_field :suggestVersion, :id => "suggestVersion"
+
+  %p
+    = form.label :suggestPositional, :class => "config", :caption => "suggestPositional"
+    = form.text_field :suggestPositional, :id => "suggestPositional"
+
+  %p
+    = form.label :suggestPushToTalk, :class => "config", :caption => "suggestPushToTalk"
+    = form.text_field :suggestPushToTalk, :id => "suggestPushToTalk"
+
+  %br
+    = form.submit "Submit Config", :class => 'btn btn-primary'
