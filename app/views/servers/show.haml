@@ -2,9 +2,9 @@
 %h2= "Server - " + @server.name
 %table{:padding => "20px"}
   %tr
-    %td{:width => "100px"}
+    %td{:width => "200px"}
       %b= "Server"
-    %td{:width => "500px"}= @server.name
+    %td{:width => "700px"}= @server.name
   %tr
     %td
       %b= "IP"
@@ -13,6 +13,12 @@
     %td
       %b= "expires"
     %td= @server.expires
+  %tr
+    %td
+      %b= "Configuration"
+    %td
+      %a{:href => "/server_configs/show/" + @server.id.to_s}
+        %span{:class => "label label-info"} Edit
   %tr
     - if (@server.subscriptionId != nil)
       %td{:height => "35px"}

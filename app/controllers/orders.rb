@@ -56,7 +56,7 @@ ServieSales::App.controllers :order do
                           :expires => session['expires'],
                           :subscriptionId => subscription.id)
       if(server.save)
-        #str = create_server(server.id)
+        str = create_server(server.id)
       else
         # Need to redirect to error page if save fails
       end

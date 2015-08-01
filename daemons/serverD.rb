@@ -13,18 +13,21 @@ loop do
   socket.recv_string(request)
 
   puts "Received request. Data: #{request.inspect}"
-  req_fn = ''
-  begin
-    req_json = JSON.parse(request)
-    req_fn   = req_json["fn"]
-  rescue
-  end
 
-  if req_fn == "update_config"
-    socket.send_string(getStatus.to_json)
-  elsif req_fn == "createServer"
-    socket.send_string( createServer( req_json["param"] ).to_json )
-  end
+  file = File.open("/home/hkrdrm/sample.txt", "w")
+  file.puts request.inspect
+  file.close
+  socket.send_string("yah")
+  #req_fn = ''
+  #begin
+  #  req_json = JSON.parse(request)
+  #  req_fn   = req_json["fn"]
+  #rescue
+  #end
+
+  #if req_fn == "update_config"
+  #  socket.send_string(getStatus.to_json)
+  #end
 end
 
 def update_config
