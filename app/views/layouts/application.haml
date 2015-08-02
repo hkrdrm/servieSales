@@ -1,7 +1,7 @@
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}/
-    %title= ["MumblePlot", @title].compact.join(" || ")
+    %title= ["Rabid Host", @title].compact.join(" || ")
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
     / Le HTML5 shim, for IE6-8 support of HTML elements
@@ -28,7 +28,9 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.navbar-brand{:href => "#"} MumblePlot
+          %a.navbar-brand{:href => "#"}
+            %img.logo{:src => "/images/mumbleLogoTiny30.png"}
+          %a.navbar-brand{:href => "#"} Rabid Host
         %div.navbar-collapse.collapse{:id => "navbar"}
           %ul.nav.navbar-nav
             %li
@@ -79,7 +81,7 @@
       %footer
         %div{:id => "wr1"}
           %div{:id => "cName"}
-            &copy; 2014 Spiers Computing LLC
+            &copy; 2014 Rabid Host LLC
           %div{:id => "stripeTag"}
             %img{:src => "/images/solid.png"}
     / /container
