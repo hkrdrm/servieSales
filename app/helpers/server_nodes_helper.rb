@@ -43,18 +43,29 @@ module ServieSales
       end
 
       def get_best_node
-        'localhost'
+        server_nodes = ServerNode.all
+        ip = nil
+        server_nodes.each do |node|
+          if(node.max_accounts > node.active_accounts)
+            ip = node.ip
+            break
+          else
+            ip = false
+          end
+        end
+        ip
       end
 
       def create_server(id)
-        requester = connect_to_node(get_best_node)
+        ip = get_best_node
+        requester = connect_to_node(ip)
         server_request = {fn: "createServer", param: id}
         requester.send_string server_request.to_json
 
         reply = ''
         requester.recv_string(reply)
         repy_json = JSON.parse(reply)
-        repy_json
+        ip
       end
 
     end

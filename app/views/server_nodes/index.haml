@@ -1,8 +1,5 @@
 %h2 ServerNodes
 
-/*- get_all_nodes_status.each do |key, value|
-/*  %p= "#{key} is #{value}"
-
 %table{:padding => "20px", :border => "1px", :width => "100%"}
   %tr
     %th{:width => "100px"}="Id"
@@ -14,13 +11,13 @@
     %th{:width => "100px"}= "Free"
     %th{:width => "100px"}= "Total"
   - @serverNodes.each do |serverNode|
-    - var = get_node_status(serverNode.ip)
+    //- var = get_node_status(serverNode.ip)
     %tr
       %td{:align => "center"}= serverNode.id
       %td{:align => "center"}= serverNode.ip
       %td{:align => "center"}= serverNode.city
       %td{:align => "center"}= serverNode.state
       %td{:align => "center"}= serverNode.ram
-      %td{:align => "center"}= var["percentFree"]
-      %td{:align => "center"}= var["free"]
-      %td{:align => "center"}= var["total"]
+      //%td{:align => "center"}= var["percentFree"]
+      //%td{:align => "center"}= var["free"]
+      //%td{:align => "center"}= var["total"]

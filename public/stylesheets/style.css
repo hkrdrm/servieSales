@@ -11,8 +11,8 @@ body{
 }
 p{
   margin-left: 20px;
-  font-size: 4px;
 }
+
 /* navbar */
 .navbar{
 /*  background-color: #B4CFEC; /* background color will be black for all browsers */
@@ -24,9 +24,16 @@ p{
   margin-top: -5px;
 }
 .frontpage{
-  font-size: 3px;
+  font-size: 60px;
+}
+#button1{
+  text-align: center;
+  font-size: 50px;
 }
 
+p.orderNowButton{
+  text-align: center;
+}
 .productPanel{
   width: 300px;
   margin: 25px;

@@ -35,4 +35,4 @@
 %div{:id => "form"}
   = form_for :order, url(:order, :create) do |f|
     %div{:class => "button" }
-      %script(src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button" data-key="#{ENV['STRIPE_PUBLIC_KEY']}" data-amount="#{@cart.total_price * 100}" data-name="Monthly Subscription" data-description="Mumble Server Order")
+      %script(src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button" data-key="#{ENV['STRIPE_PUBLIC_KEY']}" data-amount="#{@cart.total_price * 100}" data-name="Monthly Subscription" data-description="Mumble Server Order" data-billingAddress="true")

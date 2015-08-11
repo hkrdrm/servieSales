@@ -8,7 +8,7 @@
     /[if lt IE 9]
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     / Le styles
-    = stylesheet_link_tag 'bootstrap', 'bootstrap-responsive', 'style'
+    = stylesheet_link_tag 'bootstrap', 'bootstrap-responsive', 'style', 'animation.css'
     :css
       body {
         padding-top: 60px;
@@ -30,7 +30,7 @@
             %span.icon-bar
           %a.navbar-brand{:href => "#"}
             %img.logo{:src => "/images/mumbleLogoTiny30.png"}
-          %a.navbar-brand{:href => "#"} Rabid Host
+          %a.navbar-brand{:href => "/"} Rabid Host
         %div.navbar-collapse.collapse{:id => "navbar"}
           %ul.nav.navbar-nav
             %li

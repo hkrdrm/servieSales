@@ -52,11 +52,11 @@ ServieSales::App.controllers :order do
                           :superUserPassword => item['superUserPassword'],
                           :slots => item['slots'],
                           :userId => current_user.id,
-                          :ip => "192.168.0.2",
                           :expires => session['expires'],
                           :subscriptionId => subscription.id)
       if(server.save)
-        str = create_server(server.id)
+        server.ip = create_server(server.id)
+        server.save
       else
         # Need to redirect to error page if save fails
       end
