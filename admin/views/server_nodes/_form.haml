@@ -22,6 +22,18 @@
   .controls
     =f.text_field :ip, :class => 'form-control input-large input-with-feedback'
     %span.help-inline=error ? f.error_message_on(:ip, :class => 'text-error') : pat(:example)
+- error = @server_node.errors.include?(:active_accounts)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :active_accounts, :class => 'control-label'
+  .controls
+    =f.text_field :active_accounts, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:active_accounts, :class => 'text-error') : pat(:example)
+- error = @server_node.errors.include?(:max_accounts)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :max_accounts, :class => 'control-label'
+  .controls
+    =f.text_field :max_accounts, :class => 'form-control input-large input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:max_accounts, :class => 'text-error') : pat(:example)
 
 .form-actions
   =f.submit pat(:save), :class => 'btn btn-primary'

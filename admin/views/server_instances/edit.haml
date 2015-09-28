@@ -1,8 +1,0 @@
-%ul.nav.nav-tabs
-  %li=link_to tag_icon(:list, pat(:list)), url(:server_instances, :index)
-  %li=link_to tag_icon(:plus, pat(:new)), url(:server_instances, :new)
-  %li.active=link_to tag_icon(:edit, pat(:edit)), url(:server_instances, :edit, :id => @server_instances.id)
-
-.tabs-content
-  = form_for :server_instances, url(:server_instances, :update, :id => @server_instances.id), :method => :put, :class => 'form-horizontal' do |f|
-    =partial 'server_instances/form', :locals => { :f => f }

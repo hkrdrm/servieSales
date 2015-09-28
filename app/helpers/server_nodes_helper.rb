@@ -45,27 +45,29 @@ module ServieSales
       def get_best_node
         server_nodes = ServerNode.all
         ip = nil
+        node_id = nil
         server_nodes.each do |node|
           if(node.max_accounts > node.active_accounts)
             ip = node.ip
+            node_id = node.id
             break
           else
             ip = false
           end
         end
-        ip
+        s = {:node_id => node_id, :node_ip => ip}
       end
 
       def create_server(id)
-        ip = get_best_node
-        requester = connect_to_node(ip)
+        s = get_best_node
+        requester = connect_to_node(s[:node_ip])
         server_request = {fn: "createServer", param: id}
         requester.send_string server_request.to_json
 
         reply = ''
         requester.recv_string(reply)
         repy_json = JSON.parse(reply)
-        ip
+        s
       end
 
     end

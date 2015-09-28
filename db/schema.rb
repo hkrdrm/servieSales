@@ -11,29 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 50) do
+ActiveRecord::Schema.define(version: 56) do
 
-  create_table "accounts", force: true do |t|
-    t.string   "name"
-    t.string   "surname"
-    t.string   "email"
-    t.string   "crypted_password"
-    t.string   "role"
+  create_table "accounts", force: :cascade do |t|
+    t.string   "name",             limit: 255
+    t.string   "surname",          limit: 255
+    t.string   "email",            limit: 255
+    t.string   "crypted_password", limit: 255
+    t.string   "role",             limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "active_subscriptions", force: true do |t|
-    t.integer  "userId"
-    t.integer  "subscriptionId"
+  create_table "active_subscriptions", force: :cascade do |t|
+    t.integer  "userId",         limit: 4
+    t.integer  "subscriptionId", limit: 4
     t.date     "renewalDate"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "config_options", force: true do |t|
-    t.string   "option"
-    t.string   "possible_settings"
+  create_table "config_options", force: :cascade do |t|
+    t.string   "option",            limit: 255
+    t.string   "possible_settings", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "user_editable"
@@ -41,141 +41,142 @@ ActiveRecord::Schema.define(version: 50) do
 
   add_index "config_options", ["option"], name: "index_config_options_on_option", unique: true, using: :btree
 
-  create_table "invoices", force: true do |t|
-    t.integer  "userId"
-    t.integer  "orderId"
-    t.integer  "amount"
+  create_table "invoices", force: :cascade do |t|
+    t.integer  "userId",     limit: 4
+    t.integer  "orderId",    limit: 4
+    t.integer  "amount",     limit: 4
     t.boolean  "paid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "messages", force: true do |t|
-    t.integer  "userId"
-    t.string   "subject"
-    t.string   "body"
-    t.string   "from"
+  create_table "messages", force: :cascade do |t|
+    t.integer  "userId",     limit: 4
+    t.string   "subject",    limit: 255
+    t.string   "body",       limit: 255
+    t.string   "from",       limit: 255
     t.boolean  "notify"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "orders", force: true do |t|
-    t.integer  "userId"
-    t.integer  "subscriptionId"
+  create_table "orders", force: :cascade do |t|
+    t.integer  "userId",         limit: 4
+    t.integer  "subscriptionId", limit: 4
+    t.string   "paymentMethod",  limit: 255
     t.boolean  "paid"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "price"
-    t.integer  "nSlots"
-    t.integer  "serverId"
+    t.integer  "price",          limit: 4
+    t.integer  "nSlots",         limit: 4
+    t.integer  "serverId",       limit: 4
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.integer  "price",       limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "server_configs", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "database",                 limit: 255
+    t.string   "dbus",                     limit: 255
+    t.string   "dbusservice",              limit: 255
+    t.string   "ice",                      limit: 255
+    t.string   "icesecretread",            limit: 255
+    t.string   "icesecretwrite",           limit: 255
+    t.string   "MurmurPublishedEndpoints", limit: 255
+    t.string   "autobanAttempts",          limit: 255
+    t.string   "autobanTimeframe",         limit: 255
+    t.string   "uname",                    limit: 255
+    t.string   "obfuscate",                limit: 255
+    t.string   "sendversion",              limit: 255
+    t.string   "allowping",                limit: 255
+    t.string   "logdays",                  limit: 255
+    t.string   "welcometext",              limit: 255
+    t.string   "port",                     limit: 255
+    t.string   "sslCert",                  limit: 255
+    t.string   "sslKey",                   limit: 255
+    t.string   "bonjour",                  limit: 255
+    t.string   "bandwidth",                limit: 255
+    t.string   "timeout",                  limit: 255
+    t.string   "users",                    limit: 255
+    t.string   "usersperchannel",          limit: 255
+    t.string   "channelname",              limit: 255
+    t.string   "username",                 limit: 255
+    t.string   "defaultchannel",           limit: 255
+    t.string   "rememberchannel",          limit: 255
+    t.string   "textmessagelength",        limit: 255
+    t.string   "imagemessagelength",       limit: 255
+    t.string   "allowhtml",                limit: 255
+    t.string   "opusthreshold",            limit: 255
+    t.string   "registerName",             limit: 255
+    t.string   "registerPassword",         limit: 255
+    t.string   "registerUrl",              limit: 255
+    t.string   "registerHostname",         limit: 255
+    t.string   "suggestVersion",           limit: 255
+    t.string   "suggestPositional",        limit: 255
+    t.string   "suggestPushToTalk",        limit: 255
+    t.integer  "server_id",                limit: 4
+    t.string   "password",                 limit: 255
+    t.string   "logfile",                  limit: 255
+  end
+
+  create_table "server_nodes", force: :cascade do |t|
+    t.string   "city",            limit: 255
+    t.string   "state",           limit: 255
+    t.integer  "ram",             limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "ip",              limit: 255
+    t.integer  "active_accounts", limit: 4
+    t.integer  "max_accounts",    limit: 4
+  end
+
+  create_table "servers", force: :cascade do |t|
+    t.integer  "userId",            limit: 4
+    t.string   "name",              limit: 255
+    t.string   "ip",                limit: 255
+    t.string   "software",          limit: 255
+    t.integer  "slots",             limit: 4
+    t.string   "password",          limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "port",              limit: 4
+    t.string   "superUserPassword", limit: 255
     t.datetime "expires"
+    t.string   "subscriptionId",    limit: 255
+    t.integer  "node_id",           limit: 4
   end
 
-  create_table "products", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "price"
+  create_table "subscriptions", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.text     "description",  limit: 65535
+    t.integer  "billingCycle", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "price",        limit: 4
+  end
+
+  create_table "user_configs", force: :cascade do |t|
+    t.string   "option",     limit: 255
+    t.string   "setting",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "server_configs", force: true do |t|
+  create_table "users", force: :cascade do |t|
+    t.string   "email",            limit: 255
+    t.string   "crypted_password", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "database"
-    t.string   "dbus"
-    t.string   "dbusservice"
-    t.string   "ice"
-    t.string   "icesecretread"
-    t.string   "icesecretwrite"
-    t.string   "MurmurPublishedEndpoints"
-    t.string   "autobanAttempts"
-    t.string   "autobanTimeframe"
-    t.string   "uname"
-    t.string   "obfuscate"
-    t.string   "sendversion"
-    t.string   "allowping"
-    t.string   "logdays"
-    t.string   "welcometext"
-    t.string   "port"
-    t.string   "sslCert"
-    t.string   "sslKey"
-    t.string   "bonjour"
-    t.string   "bandwidth"
-    t.string   "timeout"
-    t.string   "users"
-    t.string   "usersperchannel"
-    t.string   "channelname"
-    t.string   "username"
-    t.string   "defaultchannel"
-    t.string   "rememberchannel"
-    t.string   "textmessagelength"
-    t.string   "imagemessagelength"
-    t.string   "allowhtml"
-    t.string   "opusthreshold"
-    t.string   "registerName"
-    t.string   "registerPassword"
-    t.string   "registerUrl"
-    t.string   "registerHostname"
-    t.string   "suggestVersion"
-    t.string   "suggestPositional"
-    t.string   "suggestPushToTalk"
-    t.integer  "server_id"
-    t.string   "password"
-    t.string   "logfile"
-  end
-
-  create_table "server_nodes", force: true do |t|
-    t.string   "city"
-    t.string   "state"
-    t.integer  "ram"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "ip"
-    t.integer  "active_accounts"
-    t.integer  "max_accounts"
-  end
-
-  create_table "servers", force: true do |t|
-    t.integer  "userId"
-    t.string   "name"
-    t.string   "ip"
-    t.string   "software"
-    t.integer  "slots"
-    t.string   "password"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "port"
-    t.string   "superUserPassword"
-    t.datetime "expires"
-    t.string   "subscriptionId"
-  end
-
-  create_table "subscriptions", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "billingCycle"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "price"
-  end
-
-  create_table "user_configs", force: true do |t|
-    t.string   "option"
-    t.string   "setting"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "email"
-    t.string   "crypted_password"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "username"
-    t.string   "stripeId"
-    t.string   "displayName"
+    t.string   "username",         limit: 255
+    t.string   "stripeId",         limit: 255
+    t.string   "displayName",      limit: 255
     t.boolean  "admin"
   end
 

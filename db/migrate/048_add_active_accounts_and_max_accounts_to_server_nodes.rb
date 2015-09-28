@@ -5,7 +5,7 @@ class AddActiveAccountsAndMaxAccountsToServerNodes < ActiveRecord::Migration
   end
 
   def self.down
-    add_column :server_nodes, :active_accounts
-    add_column :server_nodes, :max_accounts
+    remove_column :server_nodes, :active_accounts
+    remove_column :server_nodes, :max_accounts
   end
 end

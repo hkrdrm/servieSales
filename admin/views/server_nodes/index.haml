@@ -12,12 +12,12 @@
               =tag_icon :magic
               %span.caret
             %ul.list-menu.dropdown-menu{:role => :menu}
-              %li.list-menu-wrapper=link_to tag_icon(:check, pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
+              %li.list-menu-wrapper=link_to tag_icon('check-square-o', pat(:select_all)), '#', :id => 'select-all', :class => 'list-menu-link'
               %li.list-menu-wrapper.list-menu-wrapper-disabled
-                =link_to tag_icon(:'check-empty', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
+                =link_to tag_icon('square-o', pat(:deselect_all)), '#', :id => 'deselect-all', :class => 'list-menu-link list-menu-link-disabled'
               %li.list-menu-divider.divider
               %li.list-menu-wrapper.list-menu-wrapper-disabled
-                =link_to tag_icon(:trash, pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
+                =link_to tag_icon('trash-o', pat(:delete_selected)), '#', :id => 'delete-selected', :class => 'list-menu-link list-menu-link-disabled'
                 .list-menu-popover-delete-selected.popover.right
                   .arrow
                   %h3.popover-title=pat(:delete_selected_title)
@@ -33,6 +33,8 @@
         %th.header= mat(:server_node, :created_at)
         %th.header= mat(:server_node, :updated_at)
         %th.header= mat(:server_node, :ip)
+        %th.header= mat(:server_node, :active_accounts)
+        %th.header= mat(:server_node, :max_accounts)
         %th.header.list-row-action-header
 
     %tbody
@@ -47,10 +49,12 @@
           %td.list-column=time_ago_in_words server_node.created_at
           %td.list-column=time_ago_in_words server_node.updated_at
           %td.list-column=server_node.ip
+          %td.list-column=server_node.active_accounts
+          %td.list-column=server_node.max_accounts
           %td.list-column.list-row-action
             .list-row-action-wrapper
               =link_to tag_icon(:edit), :href => url(:server_nodes, :edit, :id => server_node.id), :rel => :tooltip, :title => "#{pat(:edit)} server_node", :class => 'list-row-action-wrapper-link'
-              =link_to tag_icon(:trash), :rel => :tooltip, :title => "#{pat(:delete)} server_node", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
+              =link_to tag_icon('trash-o'), :rel => :tooltip, :title => "#{pat(:delete)} server_node", :class => 'list-row-action-delete-one list-row-action-wrapper-link'
               .popover.list-row-action-popover-delete-one.left
                 .arrow
                 %h3.popover-title=pat(:delete, :model => "server_node")

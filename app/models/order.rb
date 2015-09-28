@@ -1,3 +1,4 @@
+require 'active_record'
 class Order < ActiveRecord::Base
 
   def self.getCurrentOrder(user)
